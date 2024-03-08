@@ -203,10 +203,14 @@ namespace MS_LR_1
 
             if ((Convert.ToInt32(textBox3.Text) > 2) && (Convert.ToInt32(textBox4.Text) > 2))
             {
-                // количество столбцов 
-                dataGridView1.ColumnCount = Convert.ToInt32(textBox3.Text)+2;
-                // количество строк 
-                dataGridView1.RowCount = Convert.ToInt32(textBox4.Text)+2;
+                // очищаем dataGridView1
+                // dataGridView1.Rows.Clear();
+
+                // количество стратегий первого игрока  
+                dataGridView1.RowCount = Convert.ToInt32(textBox3.Text) + 2;
+
+                // количество второго игрока
+                dataGridView1.ColumnCount = Convert.ToInt32(textBox4.Text) + 2;
 
                 // первый игрок 
                 dataGridView1.Rows[0].Cells[1].Value = textBox1.Text;
@@ -216,7 +220,7 @@ namespace MS_LR_1
 
                 // заполняем нулями...
                 initial_zero();
-
+                //MessageBox.Show(Convert.ToString(dataGridView1.Rows.Count), "Сообщение");
                 MessageBox.Show("Игра создана!", "Сообщение");
             }
             else 
@@ -234,35 +238,38 @@ namespace MS_LR_1
             string name = textBox5.Text;
 
             // номер стратегии / индекс 
-            int ind = Convert.ToInt32(textBox6.Text);
+            int ind = Convert.ToInt32(textBox6.Text)+1; // +1 т.к. таблица смещена относительно первой ячейки (0,0)
 
             // флаг проверки диапазона значений 
             bool check = true;
 
             // проверка диапазона 
-            if ((ind > dataGridView1.Rows.Count) && (ind > dataGridView1.Columns.Count))
+            // не должен быть равен или меньше 0 ИЛИ быть больше чем размер таблицы, -1 т.к. платежная матрица СМЕЩЕНА
+            if (((ind > dataGridView1.Rows.Count-1) && (ind > dataGridView1.Columns.Count-1)) || (ind <= 0))
             {
                 check = false;
                 MessageBox.Show("Выход за пределы платежной матрицы!", "Ошибка");
             }
-
-            // заполнение стратегии для конкретного игрока
-            // для первого, т.к. индекс имени игрока ПОСТОЯНЕН
-            if ((Convert.ToString(dataGridView1.Rows[0].Cells[1].Value) == name) && (check == true))
+            // если все ок выполняем
+            if (check)
             {
-                dataGridView1.Rows[1].Cells[ind+1].Value = textBox7.Text;
+                // заполнение стратегии для конкретного игрока
+                // для первого, т.к. индекс имени игрока ПОСТОЯНЕН
+                if (Convert.ToString(dataGridView1.Rows[0].Cells[1].Value) == name)
+                {
+                    dataGridView1.Rows[1].Cells[ind].Value = textBox7.Text;
+                }
+                // для ВТОРОГО, т.к. индекс имени игрока ПОСТОЯНЕН
+                else if (Convert.ToString(dataGridView1.Rows[1].Cells[0].Value) == name)
+                {
+                    dataGridView1.Rows[ind].Cells[1].Value = textBox7.Text;
+                }
+                // если игрок не был найден и значение находится в диапазоне
+                else
+                {
+                    MessageBox.Show("Игрок с таким именем не найден!", "Ошибка");
+                }
             }
-            // для ВТОРОГО, т.к. индекс имени игрока ПОСТОЯНЕН
-            else if ((Convert.ToString(dataGridView1.Rows[1].Cells[0].Value) == name) && (check == true))
-            {
-                dataGridView1.Rows[ind+1].Cells[1].Value = textBox7.Text;
-            }
-            // если игрок не был найден и значение находится в диапазоне
-            else if (check == true)
-            {
-                MessageBox.Show("Игрок с таким именем не найден!", "Ошибка");
-            }
-            // тест
         }
 
         //---------------------------------------------------------------------------------------------------------------------
