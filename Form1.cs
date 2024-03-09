@@ -294,37 +294,38 @@ namespace MS_LR_1
             int val = Convert.ToInt32(textBox12.Text);
 
             // индексы-координаты ячейки для записи
-            int ind_x = 0; 
-            int ind_y = 0;
+            int ind_1 = 0; 
+            int ind_2 = 0;
 
             // флаги проверки нахождения стратегий
             bool check1 = false; 
             bool check2 = false;
 
+
             // поиск индекса первой стратегии с ЗАДАННЫМ ИМЕНЕМ в таблице
-            for (int i = 1; i < M; i++)
+            for (int j = 1; j < N; j++)
             {
-                if (Convert.ToString(dataGridView1.Rows[1].Cells[i].Value) == str1)
+                if (Convert.ToString(dataGridView1.Rows[j].Cells[1].Value) == str1)
                 {
-                    ind_y = i;
-                    check1 = true;
+                    ind_1 = j;
+                    check2 = true;
                 }
             }
 
             // поиск индекса второй стратегии с ЗАДАННЫМ ИМЕНЕМ в таблице
-            for (int j = 1; j < N; j++)
+            for (int i = 1; i < M; i++)
             {
-                if (Convert.ToString(dataGridView1.Rows[j].Cells[1].Value) == str2)
+                if (Convert.ToString(dataGridView1.Rows[1].Cells[i].Value) == str2)
                 {
-                    ind_x = j;
-                    check2 = true;
+                    ind_2 = i;
+                    check1 = true;
                 }
             }
 
             // проверка и добавление веса в таблицу
             if ((check2 == true) && (check2 == true))
             {
-                dataGridView1.Rows[ind_x].Cells[ind_y].Value = val;
+                dataGridView1.Rows[ind_1].Cells[ind_2].Value = val;
                 MessageBox.Show("Вес добавлен!", "Сообщение");
             }
             else
