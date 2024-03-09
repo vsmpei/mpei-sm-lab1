@@ -519,7 +519,7 @@ namespace MS_LR_1
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(30, 90);
+            this.button7.Location = new System.Drawing.Point(38, 90);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(81, 29);
             this.button7.TabIndex = 2;
@@ -531,11 +531,11 @@ namespace MS_LR_1
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.Location = new System.Drawing.Point(18, 60);
+            this.label20.Location = new System.Drawing.Point(8, 60);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(106, 15);
+            this.label20.Size = new System.Drawing.Size(133, 15);
             this.label20.TabIndex = 1;
-            this.label20.Text = "Выгрузить в файл:";
+            this.label20.Text = "Выгрузить веса в файл:";
             // 
             // label19
             // 
@@ -560,11 +560,11 @@ namespace MS_LR_1
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(158, 61);
+            this.label23.Location = new System.Drawing.Point(147, 62);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(112, 13);
+            this.label23.Size = new System.Drawing.Size(139, 13);
             this.label23.TabIndex = 5;
-            this.label23.Text = "Загрузить из файла:";
+            this.label23.Text = "Загрузить веса из файла:";
             // 
             // button9
             // 

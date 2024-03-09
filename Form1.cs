@@ -221,7 +221,7 @@ namespace MS_LR_1
                 // заполняем нулями...
                 initial_zero();
                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows.Count), "Сообщение");
-                MessageBox.Show("Игра создана!", "Сообщение");
+                MessageBox.Show("Матрица игры создана!", "Сообщение");
             }
             else 
             {
