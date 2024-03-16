@@ -71,14 +71,14 @@ namespace MS_LR_1
             this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -312,6 +312,7 @@ namespace MS_LR_1
             this.button5.TabIndex = 11;
             this.button5.Text = "Удалить";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label15
             // 
@@ -331,6 +332,7 @@ namespace MS_LR_1
             this.button4.TabIndex = 9;
             this.button4.Text = "Удалить";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label14
             // 
@@ -498,6 +500,25 @@ namespace MS_LR_1
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(169, 90);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(81, 29);
+            this.button9.TabIndex = 6;
+            this.button9.Text = "Загрузить";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(147, 62);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(137, 13);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "Загрузить игру из файла:";
+            // 
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(41, 164);
@@ -535,7 +556,7 @@ namespace MS_LR_1
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(133, 15);
             this.label20.TabIndex = 1;
-            this.label20.Text = "Выгрузить веса в файл:";
+            this.label20.Text = "Выгрузить игру в файл:";
             // 
             // label19
             // 
@@ -556,25 +577,6 @@ namespace MS_LR_1
             this.label22.Size = new System.Drawing.Size(126, 23);
             this.label22.TabIndex = 6;
             this.label22.Text = "Матрица игры";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(147, 62);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(139, 13);
-            this.label23.TabIndex = 5;
-            this.label23.Text = "Загрузить веса из файла:";
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(169, 90);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(81, 29);
-            this.button9.TabIndex = 6;
-            this.button9.Text = "Загрузить";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // Form1
             // 
