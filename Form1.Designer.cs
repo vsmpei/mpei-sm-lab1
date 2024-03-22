@@ -79,6 +79,8 @@ namespace MS_LR_1
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -107,7 +109,7 @@ namespace MS_LR_1
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(519, 35);
+            this.groupBox1.Location = new System.Drawing.Point(492, 35);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(288, 241);
             this.groupBox1.TabIndex = 1;
@@ -209,9 +211,9 @@ namespace MS_LR_1
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(844, 35);
+            this.groupBox2.Location = new System.Drawing.Point(815, 35);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(288, 241);
+            this.groupBox2.Size = new System.Drawing.Size(307, 241);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
@@ -300,13 +302,13 @@ namespace MS_LR_1
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Location = new System.Drawing.Point(30, 303);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(433, 221);
+            this.groupBox3.Size = new System.Drawing.Size(433, 261);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(281, 133);
+            this.button5.Location = new System.Drawing.Point(254, 163);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 11;
@@ -318,15 +320,15 @@ namespace MS_LR_1
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(244, 108);
+            this.label15.Location = new System.Drawing.Point(213, 135);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(178, 15);
+            this.label15.Size = new System.Drawing.Size(176, 15);
             this.label15.TabIndex = 10;
-            this.label15.Text = "Удалить слабо доминирующие:";
+            this.label15.Text = "Удалить слабо доминируемых:";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(281, 73);
+            this.button4.Location = new System.Drawing.Point(254, 91);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 9;
@@ -338,17 +340,17 @@ namespace MS_LR_1
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(240, 48);
+            this.label14.Location = new System.Drawing.Point(209, 65);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(182, 15);
+            this.label14.Size = new System.Drawing.Size(180, 15);
             this.label14.TabIndex = 8;
-            this.label14.Text = "Удалить строго доминирующие:";
+            this.label14.Text = "Удалить строго доминируемых:";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(61, 155);
+            this.button3.Location = new System.Drawing.Point(37, 210);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 22);
+            this.button3.Size = new System.Drawing.Size(100, 22);
             this.button3.TabIndex = 7;
             this.button3.Text = "Найти";
             this.button3.UseVisualStyleBackColor = true;
@@ -358,7 +360,7 @@ namespace MS_LR_1
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(20, 111);
+            this.label12.Location = new System.Drawing.Point(34, 128);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 15);
             this.label12.TabIndex = 5;
@@ -368,7 +370,7 @@ namespace MS_LR_1
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(20, 61);
+            this.label11.Location = new System.Drawing.Point(34, 62);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 15);
             this.label11.TabIndex = 4;
@@ -376,14 +378,14 @@ namespace MS_LR_1
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(102, 111);
+            this.textBox9.Location = new System.Drawing.Point(37, 163);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 20);
             this.textBox9.TabIndex = 2;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(102, 58);
+            this.textBox8.Location = new System.Drawing.Point(37, 90);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 20);
             this.textBox8.TabIndex = 1;
@@ -408,15 +410,15 @@ namespace MS_LR_1
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Location = new System.Drawing.Point(519, 303);
+            this.groupBox4.Location = new System.Drawing.Point(492, 303);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(288, 221);
+            this.groupBox4.Size = new System.Drawing.Size(288, 261);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(102, 180);
+            this.button6.Location = new System.Drawing.Point(102, 211);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 24);
             this.button6.TabIndex = 7;
@@ -426,7 +428,7 @@ namespace MS_LR_1
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(124, 144);
+            this.textBox12.Location = new System.Drawing.Point(124, 170);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(126, 20);
             this.textBox12.TabIndex = 6;
@@ -435,7 +437,7 @@ namespace MS_LR_1
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.Location = new System.Drawing.Point(49, 147);
+            this.label18.Location = new System.Drawing.Point(50, 170);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(29, 15);
             this.label18.TabIndex = 5;
@@ -443,7 +445,7 @@ namespace MS_LR_1
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(124, 101);
+            this.textBox11.Location = new System.Drawing.Point(124, 115);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(126, 20);
             this.textBox11.TabIndex = 4;
@@ -459,7 +461,7 @@ namespace MS_LR_1
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.Location = new System.Drawing.Point(27, 104);
+            this.label17.Location = new System.Drawing.Point(27, 115);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(73, 15);
             this.label17.TabIndex = 2;
@@ -487,6 +489,8 @@ namespace MS_LR_1
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.textBox14);
+            this.groupBox5.Controls.Add(this.textBox13);
             this.groupBox5.Controls.Add(this.button9);
             this.groupBox5.Controls.Add(this.label23);
             this.groupBox5.Controls.Add(this.button8);
@@ -494,15 +498,15 @@ namespace MS_LR_1
             this.groupBox5.Controls.Add(this.button7);
             this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Location = new System.Drawing.Point(844, 303);
+            this.groupBox5.Location = new System.Drawing.Point(815, 303);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(288, 221);
+            this.groupBox5.Size = new System.Drawing.Size(307, 261);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(169, 90);
+            this.button9.Location = new System.Drawing.Point(41, 128);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(81, 29);
             this.button9.TabIndex = 6;
@@ -513,7 +517,7 @@ namespace MS_LR_1
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(147, 62);
+            this.label23.Location = new System.Drawing.Point(12, 63);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(137, 13);
             this.label23.TabIndex = 5;
@@ -521,9 +525,9 @@ namespace MS_LR_1
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(41, 164);
+            this.button8.Location = new System.Drawing.Point(41, 204);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(81, 31);
+            this.button8.Size = new System.Drawing.Size(81, 29);
             this.button8.TabIndex = 4;
             this.button8.Text = "Заполнить";
             this.button8.UseVisualStyleBackColor = true;
@@ -532,7 +536,7 @@ namespace MS_LR_1
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(8, 138);
+            this.label21.Location = new System.Drawing.Point(6, 177);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(170, 13);
             this.label21.TabIndex = 3;
@@ -540,7 +544,7 @@ namespace MS_LR_1
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(38, 90);
+            this.button7.Location = new System.Drawing.Point(185, 128);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(81, 29);
             this.button7.TabIndex = 2;
@@ -552,7 +556,7 @@ namespace MS_LR_1
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.Location = new System.Drawing.Point(8, 60);
+            this.label20.Location = new System.Drawing.Point(164, 62);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(133, 15);
             this.label20.TabIndex = 1;
@@ -578,11 +582,25 @@ namespace MS_LR_1
             this.label22.TabIndex = 6;
             this.label22.Text = "Матрица игры";
             // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(21, 90);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(117, 20);
+            this.textBox13.TabIndex = 7;
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(167, 90);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(116, 20);
+            this.textBox14.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1144, 555);
+            this.ClientSize = new System.Drawing.Size(1154, 593);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -661,6 +679,8 @@ namespace MS_LR_1
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textBox13;
     }
 }
 

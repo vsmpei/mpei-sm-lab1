@@ -91,6 +91,214 @@ namespace MS_LR_1
 
         }
 
+        // СУЩЕСТВОВАНИЯ ФАЙЛА С ЗАДАННЫМ ИМЕНЕМ 
+        private bool file_check(string file_name)
+        {
+            // проверка существования 
+            if (File.Exists(file_name))
+            {
+                // если существует
+                return true;
+            }
+            else // иначе...
+            {
+                return false;
+            }
+        }
+
+        // ЗАГРУЗКА ИЗ ФАЙЛА 
+        private void load_from_file (string file_name)
+        {
+            // строка для чтения из файла
+            string read_str = "";
+            // массив строк "чисел" из файла, которые будут в дальнейшем приведены к int
+            String[] chisl;
+            // размерность будущей матрицы
+            int N, M; // число строк и столбцов 
+
+            // инициализируем поток чтения 
+            StreamReader sr = new StreamReader(file_name);
+
+            // читаем первую строку с количеством стратегий первого игрока
+            N = Convert.ToInt32(sr.ReadLine()) + 2; // отступы, первая и вторая строка заняты...
+            // читаем вторую строку с количеством стратегий второго игрока
+            M = Convert.ToInt32(sr.ReadLine()) + 2; // отступы, первая и вторая строка заняты...
+
+            // количество стратегий первого игрока  
+            dataGridView1.RowCount = N;
+            // количество стратегий второго игрока
+            dataGridView1.ColumnCount = M;
+
+            // читаем третью строку с именем ПЕРВОГО игрока 
+            dataGridView1.Rows[1].Cells[0].Value = sr.ReadLine();
+            // читаем четвертую строку с именем ВТОРОГО игрока
+            dataGridView1.Rows[0].Cells[1].Value = sr.ReadLine();
+
+            // ввод стратегий ПЕРВОГО игрока
+            for (int i = 2; i < N; i++)
+            {
+                // читаем из потока очередную строку
+                read_str = sr.ReadLine();
+
+                // если поток вернул нам null
+                if (String.IsNullOrEmpty(read_str))
+                {
+                    dataGridView1.Rows[i].Cells[1].Value = "missing_content"; // значит строка пустая
+                }
+                // во всех остальных случаях
+                else
+                {
+                    dataGridView1.Rows[i].Cells[1].Value = read_str;
+                }
+
+            }
+
+            // ввод стратегий ВТОРОГО игрока
+            for (int j = 2; j < M; j++)
+            {
+                // читаем из потока очередную строку
+                read_str = sr.ReadLine();
+
+                // если поток вернул нам null
+                if (String.IsNullOrEmpty(read_str))
+                {
+                    dataGridView1.Rows[1].Cells[j].Value = "missing_content"; // значит строка пустая
+                }
+                // во всех остальных случаях
+                else
+                {
+                    dataGridView1.Rows[1].Cells[j].Value = read_str;
+                }
+
+            }
+
+            //пустая строка
+            read_str = "";
+
+            // цикл по строкам
+            for (int i = 2; i < N; i++)
+            {
+                // читаем первую строку
+                read_str = sr.ReadLine();
+                // разбиваем на отдельные строки 
+                chisl = read_str.Split(' ');
+
+                // цикл по столбцам 
+                for (int j = 2; j < M; j++)
+                {
+                    // присваиваем значение клетке
+                    // почему -2? Потому что таблица смещена относительно [0,0]
+                    // а массив строк начинается 0
+                    dataGridView1.Rows[i].Cells[j].Value = Convert.ToInt32(chisl[j - 2]);
+                }
+
+            }
+
+            // закрываем поток чтения
+            sr.Close();
+
+        }
+
+        // ВЫГРУЗКА В ФАЙЛ
+        private void write_into_file(string file_name)
+        {
+            // если матрица инициализирована 
+            if (initial_check())
+            {
+                // размерность таблицы
+                int N = dataGridView1.Rows.Count;
+                int M = dataGridView1.Columns.Count;
+
+                // строка для записи в файл
+                string res_str = "";
+
+                // инициализируем поток 
+                StreamWriter sw = new StreamWriter(file_name);
+
+                // выводим игроков в файл
+                sw.WriteLine("Игроки: \n");
+                // имя ВТОРОГО игрока
+                res_str = Convert.ToString(dataGridView1.Rows[0].Cells[1].Value);
+                sw.WriteLine(res_str);
+                res_str = "";
+                // имя ВТОРОГО игрока
+                res_str = Convert.ToString(dataGridView1.Rows[1].Cells[0].Value) + "\n";
+                sw.WriteLine(res_str);
+                res_str = "";
+
+                // выводим стратегии в файл
+                sw.WriteLine("Стратегии: \n");
+                // вывод стратегий ВТОРОГО игрока
+                for (int j = 1; j < N; j++)
+                {
+                    // если стартегия не пустая
+                    if (Convert.ToString(dataGridView1.Rows[j].Cells[1].Value) != "")
+                    {
+                        res_str = Convert.ToString(dataGridView1.Rows[j].Cells[1].Value);
+                        sw.WriteLine(res_str);
+                    }
+                    else // пустая стратегия
+                    {
+                        res_str = "missing_content";
+                        sw.WriteLine(res_str);
+                    }
+                }
+                // отступ в файле
+                sw.WriteLine("\n");
+                // очищем строку 
+                res_str = "";
+                // вывод стратегий ВТОРОГО игрока
+                for (int i = 1; i < M; i++)
+                {
+                    if (Convert.ToString(dataGridView1.Rows[1].Cells[i].Value) != "")
+                    {
+                        res_str = Convert.ToString(dataGridView1.Rows[1].Cells[i].Value);
+                        sw.WriteLine(res_str);
+                    }
+                    else // пустая стратегия
+                    {
+                        res_str = "missing_content";
+                        sw.WriteLine(res_str);
+                    }
+                }
+
+                // отступ в файле
+                sw.WriteLine("\n");
+                // очищем строку 
+                res_str = "";
+
+                // вывод весов в файл
+                res_str = "Веса: \n";
+                sw.WriteLine(res_str);
+                res_str = "";
+                // записываем в файл веса
+                // по всей платежной матрице, но не таблице!
+                for (int i = 2; i < N; i++)
+                {
+                    for (int j = 2; j < M; j++)
+                    {
+                        // склеиваем в строку
+                        res_str += Convert.ToString(dataGridView1.Rows[i].Cells[j].Value);
+                        res_str += " ";
+                    }
+                    // записываем очередную строку в файл
+                    sw.WriteLine(res_str);
+                    // очищаем строку 
+                    res_str = "";
+                }
+
+                // закрываем поток
+                sw.Close();
+
+                // выводим сообщение
+                MessageBox.Show("Игра выгружена в файл!", "Сообщение");
+            }
+            else // иначе...
+            {
+                MessageBox.Show("Сначала инициализируйте матрицу!", "Ошибка");
+            }
+        }
+
         // ПОИСК МАКСИМИНА
         private int find_maximin()
         {
@@ -227,9 +435,11 @@ namespace MS_LR_1
             // для по элементного сравнения строк (по столбцам) 
             int k;
 
-            // количество строк, над которыми доминирует данная
-            int dominance_rating = 0; // ~dominance ratin  
-
+            // количество строк, которые доминируют над данной 
+            int outsider_rating = 0;
+            // количество столбцов, над которыми доминирует данный
+            int dominance_rating = 0; // ~dominance rating
+             
             // флаг выхода и цикла по элементам, в случае
             // если хотя бы элемент строки j больше элемента i
             bool flag_k = true;
@@ -242,7 +452,7 @@ namespace MS_LR_1
                 // начиная со второй...
                 j = 2;
                 // переходим к следующему циклу проверок 
-                dominance_rating = 0; 
+                outsider_rating = 0; 
 
                 // со второй строки 
                 //while ((j < N) && (flag_k == true))
@@ -264,8 +474,8 @@ namespace MS_LR_1
                             // проверка сравнения
                             //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
 
-                            // если хотя бы один элемент у первой строки НЕ СТРОГО меньше чем у второй...
-                            if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) <= Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
+                            // если хотя бы один элемент у строки i БОЛЬШЕ ИЛИ РАВЕН элементу строки j => она НЕ ДОМИНИРУЕМА СТРОГО
+                            if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) >= Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
                             {
                                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
                                 // выходим из цикла по элементам
@@ -278,11 +488,11 @@ namespace MS_LR_1
                         }
 
                         // если флаг не был опущен =>
-                        // => строка i доминирует над строкой j
+                        // => строка i ДОМИНИРУЕМА СТРОГО
                         if (flag_k == true)
                         {
-                            // увеличиваем доминирование
-                            dominance_rating++;
+                            // увеличиваем рейтинг лузера 
+                            outsider_rating++;
                         }
                     }
 
@@ -292,10 +502,10 @@ namespace MS_LR_1
                     j++;
                 }
 
-                // если рейтинг доминирования > 0, т.е.
-                // данная строка доминирует хотя бы над одной строкой =>
+                // если рейтинг лузера > 0, т.е.
+                // над данной строкой доминирует хотя бы одна другая строка =>
                 // => записываем её индекс в множество
-                if (dominance_rating > 0)
+                if (outsider_rating > 0)
                 {
                     // записываем номер строки 
                     row_nums.Add(i);
@@ -360,7 +570,7 @@ namespace MS_LR_1
                             // проверка сравнения
                             //MessageBox.Show(Convert.ToString(dataGridView1.Rows[k].Cells[i].Value) + " и " + Convert.ToString(dataGridView1.Rows[k].Cells[j].Value));
 
-                            // если хотя бы один элемент у первого столбца НЕ СТРОГО меньше чем у второго...
+                            // если хотя бы один элемент у i столбца МЕНЬШЕ чем у jго столбца => jй доминирует
                             if (Convert.ToInt32(dataGridView1.Rows[k].Cells[i].Value) <= Convert.ToInt32(dataGridView1.Rows[k].Cells[j].Value))
                             {
                                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
@@ -374,7 +584,7 @@ namespace MS_LR_1
                         }
 
                         // если флаг не был опущен =>
-                        // => столбец i доминирует над столбцом j
+                        // => столбец i СТРОГО ДОМИНИРУЕТ над столбцом j
                         if (flag_k == true)
                         {
                             // увеличиваем доминирование
@@ -433,8 +643,10 @@ namespace MS_LR_1
             // для по элементного сравнения строк (по столбцам) 
             int k;
 
-            // количество строк, над которыми доминирует данная
-            int dominance_rating = 0; // ~dominance ratin  
+            // количество строк, которые доминируют над данной 
+            int outsider_rating = 0;
+            // количество столбцов, над которыми доминирует данный
+            int dominance_rating = 0; // ~dominance rating
 
             // флаг выхода и цикла по элементам, в случае
             // если хотя бы элемент строки j больше элемента i
@@ -448,7 +660,7 @@ namespace MS_LR_1
                 // начиная со второй...
                 j = 2;
                 // переходим к следующему циклу проверок 
-                dominance_rating = 0;
+                outsider_rating = 0;
 
                 // со второй строки 
                 //while ((j < N) && (flag_k == true))
@@ -470,8 +682,8 @@ namespace MS_LR_1
                             // проверка сравнения
                             //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
 
-                            // если хотя бы один элемент у первой строки СТРОГО меньше чем у второй...
-                            if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) < Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
+                            // если хотя бы один элемент у строки i БОЛЬШЕ чем у строки j
+                            if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) > Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
                             {
                                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
                                 // выходим из цикла по элементам
@@ -484,11 +696,11 @@ namespace MS_LR_1
                         }
 
                         // если флаг не был опущен =>
-                        // => строка i доминирует над строкой j
+                        // => строка j строка доминирует над i
                         if (flag_k == true)
                         {
-                            // увеличиваем доминирование
-                            dominance_rating++;
+                            // увеличиваем рейтинг лузера 
+                            outsider_rating++;
                         }
                     }
 
@@ -498,10 +710,10 @@ namespace MS_LR_1
                     j++;
                 }
 
-                // если рейтинг доминирования > 0, т.е.
-                // данная строка доминирует хотя бы над одной строкой =>
+                // если рейтинг лузера > 0, т.е.
+                // над данной строкой доминирует хотя бы одна другая строка =>
                 // => записываем её индекс в множество
-                if (dominance_rating > 0)
+                if (outsider_rating > 0)
                 {
                     // записываем номер строки 
                     row_nums.Add(i);
@@ -566,7 +778,7 @@ namespace MS_LR_1
                             // проверка сравнения
                             //MessageBox.Show(Convert.ToString(dataGridView1.Rows[k].Cells[i].Value) + " и " + Convert.ToString(dataGridView1.Rows[k].Cells[j].Value));
 
-                            // если хотя бы один элемент у первого столбца СТРОГО меньше чем у второго...
+                            // если хотя бы один элемент у первого столбца меньше чем у второго...
                             if (Convert.ToInt32(dataGridView1.Rows[k].Cells[i].Value) < Convert.ToInt32(dataGridView1.Rows[k].Cells[j].Value))
                             {
                                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
@@ -647,7 +859,9 @@ namespace MS_LR_1
             textBox10.Text = "Поставить 2";
             textBox11.Text = "Давить на жалость";
             textBox12.Text = "1000";
-
+            // стандартные значения для загрузки / выгрузки файлов
+            textBox13.Text = "GAME_INPUT.txt";
+            textBox14.Text = "GAME_RESULTS.txt";
         }
 
         //---------------------------------------------------------------------------------------------------------------------
@@ -834,104 +1048,12 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button7_Click(object sender, EventArgs e)
         {
-            // размерность таблицы
-            int N = dataGridView1.Rows.Count;
-            int M = dataGridView1.Columns.Count;
+            // имя файла 
+            string file_name = textBox14.Text;
 
-            // если матрица инициализирована 
-            if (initial_check())
-            {
-
-                // имя файла 
-                string file_name = "GAME_RESULT.txt";
-                // строка для записи в файл
-                string res_str = "";
-
-                // инициализируем поток 
-                StreamWriter sw = new StreamWriter(file_name);
-
-                // выводим игроков в файл
-                sw.WriteLine("Игроки: \n");
-                // имя ВТОРОГО игрока
-                res_str = Convert.ToString(dataGridView1.Rows[0].Cells[1].Value);
-                sw.WriteLine(res_str);
-                res_str = "";
-                // имя ВТОРОГО игрока
-                res_str = Convert.ToString(dataGridView1.Rows[1].Cells[0].Value) + "\n";
-                sw.WriteLine(res_str);
-                res_str = "";
-
-                // выводим стратегии в файл
-                sw.WriteLine("Стратегии: \n");
-                // вывод стратегий ВТОРОГО игрока
-                for (int j = 1; j < N; j++)
-                {
-                    // если стартегия не пустая
-                    if (Convert.ToString(dataGridView1.Rows[j].Cells[1].Value) != "")
-                    {
-                        res_str = Convert.ToString(dataGridView1.Rows[j].Cells[1].Value);
-                        sw.WriteLine(res_str);
-                    }
-                    else // пустая стратегия
-                    {
-                        res_str = "missing_content";
-                        sw.WriteLine(res_str);
-                    }
-                }
-                // отступ в файле
-                sw.WriteLine("\n");
-                // очищем строку 
-                res_str = "";
-                // вывод стратегий ВТОРОГО игрока
-                for (int i = 1; i < M; i++)
-                {
-                    if (Convert.ToString(dataGridView1.Rows[1].Cells[i].Value) != "")
-                    {
-                        res_str = Convert.ToString(dataGridView1.Rows[1].Cells[i].Value);
-                        sw.WriteLine(res_str);
-                    }
-                    else // пустая стратегия
-                    {
-                        res_str = "missing_content";
-                        sw.WriteLine(res_str);
-                    }
-                }
-
-                // отступ в файле
-                sw.WriteLine("\n");
-                // очищем строку 
-                res_str = "";
-
-                // вывод весов в файл
-                res_str = "Веса: \n";
-                sw.WriteLine(res_str);
-                res_str = "";
-                // записываем в файл веса
-                // по всей платежной матрице, но не таблице!
-                for (int i = 2; i < N; i++)
-                {
-                    for (int j = 2; j < M; j++)
-                    {
-                        // склеиваем в строку
-                        res_str += Convert.ToString(dataGridView1.Rows[i].Cells[j].Value);
-                        res_str += " ";
-                    }
-                    // записываем очередную строку в файл
-                    sw.WriteLine(res_str);
-                    // очищаем строку 
-                    res_str = "";
-                }
-
-                // закрываем поток
-                sw.Close();
-
-                // выводим сообщение
-                MessageBox.Show("Платежная матрица выгружена в файл!", "Сообщение");
-            }
-            else // иначе...
-            {
-                MessageBox.Show("Сначала инициализируйте матрицу!", "Ошибка");
-            }
+            // вызов метода выгрузки в файл
+            write_into_file(file_name);
+           
         }
 
         //---------------------------------------------------------------------------------------------------------------------
@@ -957,96 +1079,19 @@ namespace MS_LR_1
         private void button9_Click(object sender, EventArgs e)
         {
             // имя файла 
-            string file_name = "GAME_INPUT.txt";
-            // строка для чтения из файла
-            string read_str = "";
-            // массив строк "чисел" из файла, которые будут в дальнейшем приведены к int
-            String[] chisl;
-            // размерность будущей матрицы
-            int N, M; // число строк и столбцов 
-
-            // инициализируем поток чтения 
-            StreamReader sr = new StreamReader(file_name);
-
-            // читаем первую строку с количеством стратегий первого игрока
-            N = Convert.ToInt32(sr.ReadLine())+2; // отступы, первая и вторая строка заняты...
-            // читаем вторую строку с количеством стратегий второго игрока
-            M = Convert.ToInt32(sr.ReadLine())+2; // отступы, первая и вторая строка заняты...
-
-            // количество стратегий первого игрока  
-            dataGridView1.RowCount = N; 
-            // количество стратегий второго игрока
-            dataGridView1.ColumnCount = M;
-
-            // читаем третью строку с именем ПЕРВОГО игрока 
-            dataGridView1.Rows[1].Cells[0].Value = sr.ReadLine();
-            // читаем четвертую строку с именем ВТОРОГО игрока
-            dataGridView1.Rows[0].Cells[1].Value = sr.ReadLine();
-
-            // ввод стратегий ПЕРВОГО игрока
-            for (int i = 2; i < N; i++)
+            string file_name = textBox13.Text;
+            
+            // проверка существования файла 
+            if(file_check(file_name)) // если существует
             {
-                // читаем из потока очередную строку
-                read_str = sr.ReadLine();
-
-                // если поток вернул нам null
-                if (String.IsNullOrEmpty(read_str))
-                {
-                    dataGridView1.Rows[i].Cells[1].Value = "missing_content"; // значит строка пустая
-                }
-                // во всех остальных случаях
-                else
-                {
-                    dataGridView1.Rows[i].Cells[1].Value = read_str;
-                }
-                
+                load_from_file(file_name);
+                MessageBox.Show("Игра была загружена из файла!", "Сообщение");
             }
-
-            // ввод стратегий ВТОРОГО игрока
-            for (int j = 2; j < M; j++)
+            else // иначе...
             {
-                // читаем из потока очередную строку
-                read_str = sr.ReadLine();
-
-                // если поток вернул нам null
-                if (String.IsNullOrEmpty(read_str))
-                {
-                    dataGridView1.Rows[1].Cells[j].Value = "missing_content"; // значит строка пустая
-                }
-                // во всех остальных случаях
-                else
-                {
-                    dataGridView1.Rows[1].Cells[j].Value = read_str;
-                }
-
+                MessageBox.Show("Файл с данным именем отсутствует!", "Ошибка");
             }
-
-            //пустая строка
-            read_str = "";
-
-            // цикл по строкам
-            for (int i = 2; i < N; i++)
-            {
-                // читаем первую строку
-                read_str = sr.ReadLine();
-                // разбиваем на отдельные строки 
-                chisl = read_str.Split(' ');
-
-                // цикл по столбцам 
-                for (int j = 2; j < M; j++)
-                {
-                    // присваиваем значение клетке
-                    // почему -2? Потому что таблица смещена относительно [0,0]
-                    // а массив строк начинается 0
-                    dataGridView1.Rows[i].Cells[j].Value = Convert.ToInt32(chisl[j-2]);
-                }
-
-            }
-
-            // закрываем поток чтения
-            sr.Close();
-
-            MessageBox.Show("Игра была загружена из файла!", "Сообщение");
+            
         }
 
         //---------------------------------------------------------------------------------------------------------------------
