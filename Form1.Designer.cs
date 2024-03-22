@@ -629,7 +629,7 @@ namespace MS_LR_1
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label22.Location = new System.Drawing.Point(26, 9);
             this.label22.Name = "label22";

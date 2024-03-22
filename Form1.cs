@@ -842,35 +842,44 @@ namespace MS_LR_1
             // ведение логов в зависимости от пришедшего типа
             switch (log_type)
             {
+                case 0:
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Иницицализация приложения");
+                    break;
                 case 1:
-                    sw.WriteLine(DateTime.Now + " " + "Иницицализация новой игры");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Иницицализация новой игры");
                     break;
                 case 2:
-                    sw.WriteLine(DateTime.Now + " " + "Задание новой стратегии");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Задание новой стратегии");
                     break;
                 case 3:
-                    sw.WriteLine(DateTime.Now + " " + "Добавление весов");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Добавление весов");
                     break;
                 case 4:
-                    sw.WriteLine(DateTime.Now + " " + "Загрузка игры из файла");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Загрузка игры из файла");
                     break;
                 case 5:
-                    sw.WriteLine(DateTime.Now + " " + "Выгрузка игры в файл");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Выгрузка игры в файл");
                     break;
                 case 6:
-                    sw.WriteLine(DateTime.Now + " " + "Рандомная генерация весов");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Рандомная генерация весов");
                     break;
                 case 7:
-                    sw.WriteLine(DateTime.Now + " " + "Поиск максимина");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Поиск максимина");
                     break;
                 case 8:
-                    sw.WriteLine(DateTime.Now + " " + "Поиск минимакса");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Поиск минимакса");
                     break;
                 case 9:
-                    sw.WriteLine(DateTime.Now + " " + "Удаление строго доминируемых стратегий");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Удаление строго доминируемых стратегий");
                     break;
                 case 10:
-                    sw.WriteLine(DateTime.Now + " " + "Удаление слабо доминируемых стратегий");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Удаление слабо доминируемых стратегий");
+                    break;
+                case 101:
+                    sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка выполнить операцию при отсутствии инциализации");
+                    break;
+                default:
+                    sw.WriteLine(DateTime.Now + " " + "Предупреждение: " + "Неизвестная команда");
                     break;
             }
 
@@ -881,6 +890,9 @@ namespace MS_LR_1
         // СОБЫТИЕ ПРИ СОЗДАНИИ ФОРМЫ
         private void Form1_Load(object sender, EventArgs e)
         {
+            // вызов метода, ведущего лог файл
+            log_writer(0);
+
             // успешное создание формы 
             MessageBox.Show("Дорогой пользователь, добро пожаловать! Только что Вы зашли в приложение, написанное" +
                             " в качестве проекта для лабораторной работы №1 по дисциплине \"Операционные системы\". " +
@@ -912,8 +924,8 @@ namespace MS_LR_1
             textBox8.Text = "0";
             textBox9.Text = "0";
             // стандартные значения задания весов 
-            textBox10.Text = "Поставить 2";
-            textBox11.Text = "Давить на жалость";
+            textBox10.Text = "Давить на жалость"; 
+            textBox11.Text = "Поставить 2"; 
             textBox12.Text = "1000";
             // стандартные значения для загрузки / выгрузки файлов
             textBox13.Text = "GAME_INPUT.txt";
@@ -1018,6 +1030,7 @@ namespace MS_LR_1
             }
             else // иначе...
             {
+                log_writer(101);
                 MessageBox.Show("Сначала инициализируйте матрицу!", "Ошибка");
             }
         }
@@ -1087,6 +1100,7 @@ namespace MS_LR_1
             }
             else // иначе...
             {
+                log_writer(101);
                 MessageBox.Show("Сначала инициализируйте матрицу!", "Ошибка");
             }
 
@@ -1117,6 +1131,7 @@ namespace MS_LR_1
             }
             else // иначе...
             {
+                log_writer(101);
                 MessageBox.Show("Сначала инициализируйте матрицу!", "Ошибка");
             }    
         }
@@ -1153,6 +1168,7 @@ namespace MS_LR_1
             }
             else // иначе...
             {
+                log_writer(101);
                 MessageBox.Show("Сначала инициализируйте матрицу!", "Ошибка");
             }
         }
@@ -1195,6 +1211,7 @@ namespace MS_LR_1
             }
             else // иначе...
             {
+                log_writer(101);
                 MessageBox.Show("Сначала инициализируйте матрицу!", "Ошибка");
             }
         }
@@ -1213,6 +1230,7 @@ namespace MS_LR_1
             }
             else // иначе...
             {
+                log_writer(101);
                 MessageBox.Show("Сначала инициализируйте матрицу!", "Ошибка");
             }
         }
