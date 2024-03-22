@@ -830,7 +830,55 @@ namespace MS_LR_1
 
         }
 
-        // событие при создании формы
+        // МЕТОД, СОЗДАЮЩИЙ И ВЕДУЩИЙ ФАЙЛ ЛОГОВ
+        private void log_writer(int log_type)
+        {
+            // имя файла логов 
+            string file_name = "log.txt";
+
+            // инициализируем поток 
+            StreamWriter sw = new StreamWriter(file_name, true);
+
+            // ведение логов в зависимости от пришедшего типа
+            switch (log_type)
+            {
+                case 1:
+                    sw.WriteLine(DateTime.Now + " " + "Иницицализация новой игры");
+                    break;
+                case 2:
+                    sw.WriteLine(DateTime.Now + " " + "Задание новой стратегии");
+                    break;
+                case 3:
+                    sw.WriteLine(DateTime.Now + " " + "Добавление весов");
+                    break;
+                case 4:
+                    sw.WriteLine(DateTime.Now + " " + "Загрузка игры из файла");
+                    break;
+                case 5:
+                    sw.WriteLine(DateTime.Now + " " + "Выгрузка игры в файл");
+                    break;
+                case 6:
+                    sw.WriteLine(DateTime.Now + " " + "Рандомная генерация весов");
+                    break;
+                case 7:
+                    sw.WriteLine(DateTime.Now + " " + "Поиск максимина");
+                    break;
+                case 8:
+                    sw.WriteLine(DateTime.Now + " " + "Поиск минимакса");
+                    break;
+                case 9:
+                    sw.WriteLine(DateTime.Now + " " + "Удаление строго доминируемых стратегий");
+                    break;
+                case 10:
+                    sw.WriteLine(DateTime.Now + " " + "Удаление слабо доминируемых стратегий");
+                    break;
+            }
+
+            // закрытие потока
+            sw.Close();
+        }
+
+        // СОБЫТИЕ ПРИ СОЗДАНИИ ФОРМЫ
         private void Form1_Load(object sender, EventArgs e)
         {
             // успешное создание формы 
@@ -873,6 +921,8 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button1_Click_1(object sender, EventArgs e)
         {
+            // вызов метода ведения логов
+            log_writer(1);
 
             // удаляем все СТАРЫЕ строки
             dataGridView1.Rows.Clear();
@@ -912,6 +962,9 @@ namespace MS_LR_1
         //----------------------------------------------------------------------------------------------------------------------
         private void button2_Click(object sender, EventArgs e)
         {
+            // вызов метода ведения логов
+            log_writer(2);
+
             // проверка инициализации
             if (initial_check())
             {
@@ -967,6 +1020,9 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button6_Click(object sender, EventArgs e)
         {
+            // вызов метода ведения логов
+            log_writer(3);
+
             // проверка инициализации матрицы
             if (initial_check())
             {
@@ -1041,10 +1097,14 @@ namespace MS_LR_1
                 int maximin = find_maximin();
                 // вывод максиммина в текстбокс
                 textBox8.Text = Convert.ToString(maximin);
+                // вызов метода ведения логов
+                log_writer(7);
                 // поиск минимакса 
                 int minimax = find_minimax();
                 // вывод минимакса в текстбокс
                 textBox9.Text = Convert.ToString(minimax);
+                // вызов метода ведения логов
+                log_writer(8);
                 // сообщение об поиске максимина и минимакса
                 MessageBox.Show("Поиск максимина и минимакса!", "Сообщение");
             }
@@ -1059,6 +1119,9 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button7_Click(object sender, EventArgs e)
         {
+            // вызов метода ведения логов
+            log_writer(5);
+
             // имя файла 
             string file_name = textBox14.Text;
 
@@ -1072,9 +1135,12 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button8_Click(object sender, EventArgs e)
         {
+
             // проверка инициализации матрицы
             if (initial_check())
             {
+                // вызов метода ведения логов
+                log_writer(6);
                 initial_random();
                 MessageBox.Show("Рандомные значения весов сгенерированы!", "Сообщение");
             }
@@ -1089,6 +1155,7 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button9_Click(object sender, EventArgs e)
         {
+
             // имя файла 
             string file_name = textBox13.Text;
             
@@ -1096,6 +1163,8 @@ namespace MS_LR_1
             if(file_check(file_name)) // если существует
             {
                 load_from_file(file_name);
+                // вызов метода ведения логов
+                log_writer(4);
                 MessageBox.Show("Игра была загружена из файла!", "Сообщение");
             }
             else // иначе...
@@ -1114,7 +1183,8 @@ namespace MS_LR_1
             if (initial_check())
             {
                 remove_strictly_dominant();
-                MessageBox.Show("Строго доминирующие стратегии удалены!", "Сообщение");
+                log_writer(9);
+                MessageBox.Show("Строго доминируемые стратегии удалены!", "Сообщение");
             }
             else // иначе...
             {
@@ -1131,12 +1201,26 @@ namespace MS_LR_1
             if (initial_check())
             {
                 remove_weakly_dominant();
-                MessageBox.Show("Слабо доминирующие стратегии удалены!", "Сообщение");
+                log_writer(10);
+                MessageBox.Show("Слабо доминируемые стратегии удалены!", "Сообщение");
             }
             else // иначе...
             {
                 MessageBox.Show("Сначала инициализируйте матрицу!", "Ошибка");
             }
+        }
+
+        //---------------------------------------------------------------------------------------------------------------------
+        // П Р О С М О Т Р  И С Т О Р И И  И З М Е Н Е Н И Й      
+        //---------------------------------------------------------------------------------------------------------------------
+        private void button10_Click(object sender, EventArgs e)
+        {
+            // инициализируем новую форму
+            Form2 fr = new Form2();
+            // заголовок новой формы
+            fr.Text = "История изменений";
+            // показываем форму с историей
+            fr.Show();
         }
     }
 }

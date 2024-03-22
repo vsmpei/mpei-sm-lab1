@@ -81,6 +81,8 @@ namespace MS_LR_1
             this.label22 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -274,7 +276,7 @@ namespace MS_LR_1
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button2.Location = new System.Drawing.Point(108, 201);
+            this.button2.Location = new System.Drawing.Point(110, 201);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(81, 29);
             this.button2.TabIndex = 3;
@@ -328,9 +330,9 @@ namespace MS_LR_1
             this.label15.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label15.Location = new System.Drawing.Point(213, 142);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(176, 15);
+            this.label15.Size = new System.Drawing.Size(175, 15);
             this.label15.TabIndex = 10;
-            this.label15.Text = "Удалить слабо доминируемых:";
+            this.label15.Text = "Удалить слабо доминируемыe:";
             // 
             // button4
             // 
@@ -386,7 +388,7 @@ namespace MS_LR_1
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(37, 163);
+            this.textBox9.Location = new System.Drawing.Point(37, 155);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(100, 20);
             this.textBox9.TabIndex = 2;
@@ -438,7 +440,7 @@ namespace MS_LR_1
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(124, 170);
+            this.textBox12.Location = new System.Drawing.Point(124, 168);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(126, 20);
             this.textBox12.TabIndex = 6;
@@ -447,7 +449,7 @@ namespace MS_LR_1
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.Location = new System.Drawing.Point(50, 170);
+            this.label18.Location = new System.Drawing.Point(27, 168);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(29, 15);
             this.label18.TabIndex = 5;
@@ -500,6 +502,8 @@ namespace MS_LR_1
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox5.Controls.Add(this.button10);
+            this.groupBox5.Controls.Add(this.label24);
             this.groupBox5.Controls.Add(this.textBox14);
             this.groupBox5.Controls.Add(this.textBox13);
             this.groupBox5.Controls.Add(this.button9);
@@ -605,10 +609,31 @@ namespace MS_LR_1
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(167, 90);
+            this.textBox14.Location = new System.Drawing.Point(170, 91);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(116, 20);
             this.textBox14.TabIndex = 8;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(184, 186);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(112, 13);
+            this.label24.TabIndex = 9;
+            this.label24.Text = "История изменений:";
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button10.ForeColor = System.Drawing.Color.Black;
+            this.button10.Location = new System.Drawing.Point(196, 207);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(81, 29);
+            this.button10.TabIndex = 10;
+            this.button10.Text = "Открыть";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // Form1
             // 
@@ -696,6 +721,8 @@ namespace MS_LR_1
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button10;
     }
 }
 
