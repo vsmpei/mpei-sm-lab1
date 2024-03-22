@@ -44,6 +44,9 @@ namespace MS_LR_1
             int N = dataGridView1.Rows.Count;
             int M = dataGridView1.Columns.Count;
 
+            // рандомное значение для записи в матрицу 
+            // int rand;
+
             // рандомное значение 
             Random rndm_weight = new Random();
 
@@ -51,9 +54,15 @@ namespace MS_LR_1
             for (int i = 2; i < N; i++)
             {
                 for (int j = 2; j < M; j++)
+                //for (int j = i; j < M; j++)
                 {
                     // присваиваем случаное значение в диапазоне от -10 до 10 весам
                     dataGridView1.Rows[i].Cells[j].Value = rndm_weight.Next(-10, 10);
+
+                    // присваиваем случаное значение в диапазоне СИММЕТРИЧНО
+                    //rand = rndm_weight.Next(-10, 10);
+                    //dataGridView1.Rows[i].Cells[j].Value = rand;
+                    //dataGridView1.Rows[j].Cells[i].Value = -1*rand;
                 }
             }
 
@@ -81,20 +90,20 @@ namespace MS_LR_1
             {
                 // первое минимальное значение в строке
                 // СТОЛБЕЦ ФИКСИРОВАННЫЙ, Т.К. ВСЕ СТРОКИ НАЧИНАЮТСЯ С ОДНОГО СТОЛБЦА...
-                //min = Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value);
-                min = Convert.ToInt32(dataGridView1[i, 2].Value);
+                min = Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value);
+                //min = Convert.ToInt32(dataGridView1[i, 2].Value);
 
                 // цикл по столбцам
                 for (int j = 2; j < M; j++)
                 {
                     //MessageBox.Show(Convert.ToString(dataGridView1[j, i].Value));
                     // если текущее минимальное значение больше найденного
-                    //if (Convert.ToInt32(dataGridView1.Rows[i].Cells[j].Value) < min)
-                    if (Convert.ToInt32(dataGridView1[i, j].Value) < min)
+                    if (Convert.ToInt32(dataGridView1.Rows[i].Cells[j].Value) < min)
+                    //if (Convert.ToInt32(dataGridView1[i, j].Value) < min)
                     {
                         // новое минимальное значение  
-                        //min = Convert.ToInt32(dataGridView1.Rows[i].Cells[j].Value);
-                        min = Convert.ToInt32(dataGridView1[i, j].Value);
+                        min = Convert.ToInt32(dataGridView1.Rows[i].Cells[j].Value);
+                        //min = Convert.ToInt32(dataGridView1[i, j].Value);
                     }
                 }
                 //MessageBox.Show(Convert.ToString(min));
@@ -140,19 +149,19 @@ namespace MS_LR_1
             {
                 // первое максимальное значение в строке
                 // СТРОКА ФИКСИРОВАННАЯ, Т.К. ВСЕ СТОЛБЦЫ НАЧИНАЮТСЯ С ОДНОЙ СТРОКИ...
-                // max = Convert.ToInt32(dataGridView1.Rows[2].Cells[j].Value);
-                max = Convert.ToInt32(dataGridView1[2, j].Value);
+                max = Convert.ToInt32(dataGridView1.Rows[2].Cells[j].Value);
+                //max = Convert.ToInt32(dataGridView1[2, j].Value);
 
                 // цикл по строкам
                 for (int i = 2; i < N; i++)
                 {
                     // если текущее максимальное значение меньше найденного
-                    //if (Convert.ToInt32(dataGridView1.Rows[i].Cells[j].Value) > max)
-                    if (Convert.ToInt32(dataGridView1[i, j].Value) > max)
+                    if (Convert.ToInt32(dataGridView1.Rows[i].Cells[j].Value) > max)
+                    //if (Convert.ToInt32(dataGridView1[i, j].Value) > max)
                     {
                         // новое максимальное значение  
-                        //max = Convert.ToInt32(dataGridView1.Rows[i].Cells[j].Value);
-                        max = Convert.ToInt32(dataGridView1[i, j].Value);
+                        max = Convert.ToInt32(dataGridView1.Rows[i].Cells[j].Value);
+                        //max = Convert.ToInt32(dataGridView1[i, j].Value);
                     }
                 }
 
@@ -371,7 +380,7 @@ namespace MS_LR_1
             textBox2.Text = "Студент";
             // стандартный размер иговой матрицы
             textBox3.Text = "5";
-            textBox4.Text = "5";
+            textBox4.Text = "4";
             // стандартные значения задания стратегии 
             textBox5.Text = "Бородин";
             textBox6.Text = "1";
