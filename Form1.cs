@@ -891,6 +891,13 @@ namespace MS_LR_1
             // имя формы 
             this.Text = "Лабораторная работа 1";
 
+            // полупрозрачные GroupBox
+            groupBox1.BackColor = Color.FromArgb(100, 255, 255, 255);
+            groupBox2.BackColor = Color.FromArgb(100, 255, 255, 255);
+            groupBox3.BackColor = Color.FromArgb(100, 255, 255, 255);
+            groupBox4.BackColor = Color.FromArgb(100, 255, 255, 255);
+            groupBox5.BackColor = Color.FromArgb(100, 255, 255, 255);
+
             // стандартные значения имен игроков  
             textBox1.Text = "Бородин";
             textBox2.Text = "Студент";

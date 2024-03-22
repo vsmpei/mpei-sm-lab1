@@ -29,6 +29,7 @@ namespace MS_LR_1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -71,6 +72,10 @@ namespace MS_LR_1
             this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
@@ -79,10 +84,6 @@ namespace MS_LR_1
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -519,6 +520,41 @@ namespace MS_LR_1
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button10.ForeColor = System.Drawing.Color.Black;
+            this.button10.Location = new System.Drawing.Point(196, 207);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(81, 29);
+            this.button10.TabIndex = 10;
+            this.button10.Text = "Открыть";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(184, 186);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(112, 13);
+            this.label24.TabIndex = 9;
+            this.label24.Text = "История изменений:";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(180, 91);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(116, 20);
+            this.textBox14.TabIndex = 8;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(21, 90);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(117, 20);
+            this.textBox13.TabIndex = 7;
+            // 
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -562,7 +598,7 @@ namespace MS_LR_1
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button7.Location = new System.Drawing.Point(185, 128);
+            this.button7.Location = new System.Drawing.Point(196, 128);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(81, 29);
             this.button7.TabIndex = 2;
@@ -593,6 +629,7 @@ namespace MS_LR_1
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.SystemColors.ControlLight;
             this.label22.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label22.Location = new System.Drawing.Point(26, 9);
             this.label22.Name = "label22";
@@ -600,46 +637,13 @@ namespace MS_LR_1
             this.label22.TabIndex = 6;
             this.label22.Text = "Матрица игры";
             // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(21, 90);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(117, 20);
-            this.textBox13.TabIndex = 7;
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(170, 91);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(116, 20);
-            this.textBox14.TabIndex = 8;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(184, 186);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(112, 13);
-            this.label24.TabIndex = 9;
-            this.label24.Text = "История изменений:";
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button10.ForeColor = System.Drawing.Color.Black;
-            this.button10.Location = new System.Drawing.Point(196, 207);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(81, 29);
-            this.button10.TabIndex = 10;
-            this.button10.Text = "Открыть";
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1080, 583);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox5);
