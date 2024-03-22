@@ -16,6 +16,8 @@ namespace MS_LR_1
         public Form1()
         {
             InitializeComponent();
+            // добавление строк ВРУЧНУЮ
+            dataGridView1.AllowUserToAddRows = false;
         }
 
         // ЗАПОЛНЕНИЕ НУЛЯМИ ВЕСОВ МАТРИЦЫ
@@ -225,50 +227,63 @@ namespace MS_LR_1
             // для по элементного сравнения строк (по столбцам) 
             int k;
 
+            // количество строк, над которыми доминирует данная
+            int dominance_rating = 0; // ~dominance ratin  
+
             // флаг выхода и цикла по элементам, в случае
-            // если хотя бы элемент строки i+1 больше элемента iой
+            // если хотя бы элемент строки j больше элемента i
             bool flag_k = true;
 
-            // дополнительный счетчик
-            //int kol;
-
-            //---------------------------------------------------------------------------------------------------------
             // П О  С Т Р О К А М 
             // c первой строки
-            while (i < N - 1)
+            while (i < N)
             {
 
-                // начиная со следующего...
-                j = i + 1;
-
-                flag_k = true; // переходим к следующему циклу проверок 
-
+                // начиная со второй...
+                j = 2;
+                // переходим к следующему циклу проверок 
+                dominance_rating = 0; 
 
                 // со второй строки 
-                while ((j < N) && (flag_k == true))
-               // while (j < N)
+                //while ((j < N) && (flag_k == true))
+                while (j < N) 
                 {
                     // с первого столбца  
                     k = 2;
-                    // пока все ок 
-                    //flag_k = true;
 
-                    // по столбцам (по-элементно)
-                    while ((k < M) && (flag_k == true))
+                    // новый цикл проверок 
+                    flag_k = true;
+
+                    // нет смысла сравнивать саму с собой
+                    if (j != i)
                     {
-                        MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
 
-                        // если хотя бы один элемент у первой строки СТРОГО больше чем у второй...
-                        if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) < Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
+                        // по столбцам (по-элементно)
+                        while ((k < M) && (flag_k == true))
                         {
+                            // проверка сравнения
                             //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
-                            // выходим из цикла по элементам
-                            flag_k = false;
+
+                            // если хотя бы один элемент у первой строки СТРОГО меньше чем у второй...
+                            if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) < Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
+                            {
+                                //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
+                                // выходим из цикла по элементам
+                                flag_k = false;
+                            }
+
+                            //MessageBox.Show(Convert.ToString(k));
+                            // переходим к следующему элементу 
+                            k++;
                         }
 
-                        //MessageBox.Show(Convert.ToString(k));
-                        // переходим к следующему элементу 
-                        k++;
+                        // если флаг не был опущен =>
+                        // => строка i доминирует над строкой j
+                        if (flag_k == true)
+                        {
+                            // увеличиваем доминирование
+                            dominance_rating++;
+                        }
                     }
 
                     //MessageBox.Show(Convert.ToString(j));
@@ -277,17 +292,16 @@ namespace MS_LR_1
                     j++;
                 }
 
-                // если НЕ было выхода из цикла =>
-                // => данная строка больше всех остальных
-                // по КАЖДОМУ элементу!
-                if (flag_k == true)
+                // если рейтинг доминирования > 0, т.е.
+                // данная строка доминирует хотя бы над одной строкой =>
+                // => записываем её индекс в множество
+                if (dominance_rating > 0)
                 {
                     // записываем номер строки 
                     row_nums.Add(i);
                 }
-
-                
-                // переходим к следующей строке
+       
+                // переходим к следующей строке (паре строк)
                 i++;
             }
 
@@ -298,8 +312,103 @@ namespace MS_LR_1
                 foreach (var ind in row_nums.Reverse())
                 {
                     // удаляем строки с найденными номерами...
-                    //dataGridView1.Rows.RemoveAt(ind);
-                    MessageBox.Show(Convert.ToString(ind));
+                    dataGridView1.Rows.RemoveAt(ind);
+                    //MessageBox.Show(Convert.ToString(ind));
+                }
+            }
+
+
+            // обновляем размерность таблицы
+            N = dataGridView1.Rows.Count;
+            M = dataGridView1.Columns.Count;
+
+            // НАЧИНАЯ с первого столбца для первого цикла 
+            i = 2;
+            // НАЧИНАЯ со второго столбца для второго цикла 
+            j = 3;
+            // количество столбцов, над которыми доминирует данный
+            dominance_rating = 0; // ~dominance ratin  
+            // флаг выхода и цикла по элементам, в случае
+            // если хотя бы элемент столбца j больше элемента столбца i
+            flag_k = true;
+
+            // П О  С Т О Л Б Ц А М  
+            // c первого столбца строки
+            while (i < M)
+            {
+                // начиная со второго...
+                j = 2;
+                // переходим к следующему циклу проверок 
+                dominance_rating = 0;
+
+                // со второго столбца
+                while (j < M)
+                {
+                    // с первой строки  
+                    k = 2;
+
+                    // новый цикл проверок 
+                    flag_k = true;
+
+                    // нет смысла сравнивать сам с собой
+                    if (j != i)
+                    {
+
+                        // по строкам (по-элементно)
+                        while ((k < N) && (flag_k == true))
+                        {
+                            // проверка сравнения
+                            //MessageBox.Show(Convert.ToString(dataGridView1.Rows[k].Cells[i].Value) + " и " + Convert.ToString(dataGridView1.Rows[k].Cells[j].Value));
+
+                            // если хотя бы один элемент у первого столбца СТРОГО меньше чем у второго...
+                            if (Convert.ToInt32(dataGridView1.Rows[k].Cells[i].Value) < Convert.ToInt32(dataGridView1.Rows[k].Cells[j].Value))
+                            {
+                                //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
+                                // выходим из цикла по элементам
+                                flag_k = false;
+                            }
+
+                            //MessageBox.Show(Convert.ToString(k));
+                            // переходим к следующему элементу 
+                            k++;
+                        }
+
+                        // если флаг не был опущен =>
+                        // => столбец i доминирует над столбцом j
+                        if (flag_k == true)
+                        {
+                            // увеличиваем доминирование
+                            dominance_rating++;
+                        }
+                    }
+
+                    //MessageBox.Show(Convert.ToString(j));
+
+                    // переходим к следующему столбцу
+                    j++;
+                }
+
+                // если рейтинг доминирования > 0, т.е.
+                // данный столбец доминирует хотя бы над одним столбцом =>
+                // => записываем его индекс в множество
+                if (dominance_rating > 0)
+                {
+                    // записываем номер столбца 
+                    column_nums.Add(i);
+                }
+
+                // переходим к следующему столбцу (паре столбцов)
+                i++;
+            }
+
+            // если вообще были найдены такие строки...
+            if (column_nums.Count != 0)
+            {
+                // цикл по стеку
+                foreach (var ind in column_nums.Reverse())
+                {
+                    // удаляем столбцы с найденными номерами...
+                    dataGridView1.Columns.RemoveAt(ind);
                 }
             }
 
@@ -324,50 +433,63 @@ namespace MS_LR_1
             // для по элементного сравнения строк (по столбцам) 
             int k;
 
+            // количество строк, над которыми доминирует данная
+            int dominance_rating = 0; // ~dominance ratin  
+
             // флаг выхода и цикла по элементам, в случае
-            // если хотя бы элемент строки i+1 больше элемента iой
+            // если хотя бы элемент строки j больше элемента i
             bool flag_k = true;
 
-            // дополнительный счетчик
-            //int kol;
-
-            //---------------------------------------------------------------------------------------------------------
             // П О  С Т Р О К А М 
             // c первой строки
-            while (i < N - 1)
+            while (i < N)
             {
 
-                // начиная со следующего...
-                j = i + 1;
-
-                flag_k = true; // переходим к следующему циклу проверок 
-
+                // начиная со второй...
+                j = 2;
+                // переходим к следующему циклу проверок 
+                dominance_rating = 0;
 
                 // со второй строки 
-                while ((j < N) && (flag_k == true))
-                // while (j < N)
+                //while ((j < N) && (flag_k == true))
+                while (j < N)
                 {
                     // с первого столбца  
                     k = 2;
-                    // пока все ок 
-                    //flag_k = true;
 
-                    // по столбцам (по-элементно)
-                    while ((k < M) && (flag_k == true))
+                    // новый цикл проверок 
+                    flag_k = true;
+
+                    // нет смысла сравнивать саму с собой
+                    if (j != i)
                     {
-                        MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
 
-                        // если хотя бы один элемент у первой строки СТРОГО больше чем у второй...
-                        if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) <= Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
+                        // по столбцам (по-элементно)
+                        while ((k < M) && (flag_k == true))
                         {
+                            // проверка сравнения
                             //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
-                            // выходим из цикла по элементам
-                            flag_k = false;
+
+                            // если хотя бы один элемент у первой строки НЕ СТРОГО меньше чем у второй...
+                            if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) <= Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
+                            {
+                                //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
+                                // выходим из цикла по элементам
+                                flag_k = false;
+                            }
+
+                            //MessageBox.Show(Convert.ToString(k));
+                            // переходим к следующему элементу 
+                            k++;
                         }
 
-                        //MessageBox.Show(Convert.ToString(k));
-                        // переходим к следующему элементу 
-                        k++;
+                        // если флаг не был опущен =>
+                        // => строка i доминирует над строкой j
+                        if (flag_k == true)
+                        {
+                            // увеличиваем доминирование
+                            dominance_rating++;
+                        }
                     }
 
                     //MessageBox.Show(Convert.ToString(j));
@@ -376,17 +498,16 @@ namespace MS_LR_1
                     j++;
                 }
 
-                // если НЕ было выхода из цикла =>
-                // => данная строка больше всех остальных
-                // по КАЖДОМУ элементу!
-                if (flag_k == true)
+                // если рейтинг доминирования > 0, т.е.
+                // данная строка доминирует хотя бы над одной строкой =>
+                // => записываем её индекс в множество
+                if (dominance_rating > 0)
                 {
                     // записываем номер строки 
                     row_nums.Add(i);
                 }
 
-
-                // переходим к следующей строке
+                // переходим к следующей строке (паре строк)
                 i++;
             }
 
@@ -397,8 +518,103 @@ namespace MS_LR_1
                 foreach (var ind in row_nums.Reverse())
                 {
                     // удаляем строки с найденными номерами...
-                    //dataGridView1.Rows.RemoveAt(ind);
-                    MessageBox.Show(Convert.ToString(ind));
+                    dataGridView1.Rows.RemoveAt(ind);
+                    //MessageBox.Show(Convert.ToString(ind));
+                }
+            }
+
+
+            // обновляем размерность таблицы
+            N = dataGridView1.Rows.Count;
+            M = dataGridView1.Columns.Count;
+
+            // НАЧИНАЯ с первого столбца для первого цикла 
+            i = 2;
+            // НАЧИНАЯ со второго столбца для второго цикла 
+            j = 3;
+            // количество столбцов, над которыми доминирует данный
+            dominance_rating = 0; // ~dominance ratin  
+            // флаг выхода и цикла по элементам, в случае
+            // если хотя бы элемент столбца j больше элемента столбца i
+            flag_k = true;
+
+            // П О  С Т О Л Б Ц А М  
+            // c первого столбца строки
+            while (i < M)
+            {
+                // начиная со второго...
+                j = 2;
+                // переходим к следующему циклу проверок 
+                dominance_rating = 0;
+
+                // со второго столбца
+                while (j < M)
+                {
+                    // с первой строки  
+                    k = 2;
+
+                    // новый цикл проверок 
+                    flag_k = true;
+
+                    // нет смысла сравнивать сам с собой
+                    if (j != i)
+                    {
+
+                        // по строкам (по-элементно)
+                        while ((k < N) && (flag_k == true))
+                        {
+                            // проверка сравнения
+                            //MessageBox.Show(Convert.ToString(dataGridView1.Rows[k].Cells[i].Value) + " и " + Convert.ToString(dataGridView1.Rows[k].Cells[j].Value));
+
+                            // если хотя бы один элемент у первого столбца СТРОГО меньше чем у второго...
+                            if (Convert.ToInt32(dataGridView1.Rows[k].Cells[i].Value) <= Convert.ToInt32(dataGridView1.Rows[k].Cells[j].Value))
+                            {
+                                //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
+                                // выходим из цикла по элементам
+                                flag_k = false;
+                            }
+
+                            //MessageBox.Show(Convert.ToString(k));
+                            // переходим к следующему элементу 
+                            k++;
+                        }
+
+                        // если флаг не был опущен =>
+                        // => столбец i доминирует над столбцом j
+                        if (flag_k == true)
+                        {
+                            // увеличиваем доминирование
+                            dominance_rating++;
+                        }
+                    }
+
+                    //MessageBox.Show(Convert.ToString(j));
+
+                    // переходим к следующему столбцу
+                    j++;
+                }
+
+                // если рейтинг доминирования > 0, т.е.
+                // данный столбец доминирует хотя бы над одним столбцом =>
+                // => записываем его индекс в множество
+                if (dominance_rating > 0)
+                {
+                    // записываем номер столбца 
+                    column_nums.Add(i);
+                }
+
+                // переходим к следующему столбцу (паре столбцов)
+                i++;
+            }
+
+            // если вообще были найдены такие строки...
+            if (column_nums.Count != 0)
+            {
+                // цикл по стеку
+                foreach (var ind in column_nums.Reverse())
+                {
+                    // удаляем столбцы с найденными номерами...
+                    dataGridView1.Columns.RemoveAt(ind);
                 }
             }
 
