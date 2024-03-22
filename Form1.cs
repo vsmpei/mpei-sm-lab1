@@ -264,8 +264,8 @@ namespace MS_LR_1
                             // проверка сравнения
                             //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
 
-                            // если хотя бы один элемент у первой строки СТРОГО меньше чем у второй...
-                            if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) < Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
+                            // если хотя бы один элемент у первой строки НЕ СТРОГО меньше чем у второй...
+                            if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) <= Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
                             {
                                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
                                 // выходим из цикла по элементам
@@ -360,8 +360,8 @@ namespace MS_LR_1
                             // проверка сравнения
                             //MessageBox.Show(Convert.ToString(dataGridView1.Rows[k].Cells[i].Value) + " и " + Convert.ToString(dataGridView1.Rows[k].Cells[j].Value));
 
-                            // если хотя бы один элемент у первого столбца СТРОГО меньше чем у второго...
-                            if (Convert.ToInt32(dataGridView1.Rows[k].Cells[i].Value) < Convert.ToInt32(dataGridView1.Rows[k].Cells[j].Value))
+                            // если хотя бы один элемент у первого столбца НЕ СТРОГО меньше чем у второго...
+                            if (Convert.ToInt32(dataGridView1.Rows[k].Cells[i].Value) <= Convert.ToInt32(dataGridView1.Rows[k].Cells[j].Value))
                             {
                                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
                                 // выходим из цикла по элементам
@@ -470,8 +470,8 @@ namespace MS_LR_1
                             // проверка сравнения
                             //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
 
-                            // если хотя бы один элемент у первой строки НЕ СТРОГО меньше чем у второй...
-                            if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) <= Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
+                            // если хотя бы один элемент у первой строки СТРОГО меньше чем у второй...
+                            if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) < Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
                             {
                                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
                                 // выходим из цикла по элементам
@@ -567,7 +567,7 @@ namespace MS_LR_1
                             //MessageBox.Show(Convert.ToString(dataGridView1.Rows[k].Cells[i].Value) + " и " + Convert.ToString(dataGridView1.Rows[k].Cells[j].Value));
 
                             // если хотя бы один элемент у первого столбца СТРОГО меньше чем у второго...
-                            if (Convert.ToInt32(dataGridView1.Rows[k].Cells[i].Value) <= Convert.ToInt32(dataGridView1.Rows[k].Cells[j].Value))
+                            if (Convert.ToInt32(dataGridView1.Rows[k].Cells[i].Value) < Convert.ToInt32(dataGridView1.Rows[k].Cells[j].Value))
                             {
                                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
                                 // выходим из цикла по элементам
