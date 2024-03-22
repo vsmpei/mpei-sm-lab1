@@ -16,8 +16,6 @@ namespace MS_LR_1
         public Form1()
         {
             InitializeComponent();
-            // добавление строк ВРУЧНУЮ
-            dataGridView1.AllowUserToAddRows = false;
         }
 
         // ЗАПОЛНЕНИЕ НУЛЯМИ ВЕСОВ МАТРИЦЫ
@@ -842,6 +840,9 @@ namespace MS_LR_1
                             "Например, детально настраивать игровую матрицу, а так же искать максимин, минимакс, удалять" +
                             " строго доминирующие, а так же слабо доминирующие стратегии!" , "Сообщение");
 
+            // имя формы 
+            this.Text = "Лабораторная работа 1";
+
             // стандартные значения имен игроков  
             textBox1.Text = "Бородин";
             textBox2.Text = "Студент";
@@ -862,6 +863,9 @@ namespace MS_LR_1
             // стандартные значения для загрузки / выгрузки файлов
             textBox13.Text = "GAME_INPUT.txt";
             textBox14.Text = "GAME_RESULTS.txt";
+
+            // добавление строк ВРУЧНУЮ
+            dataGridView1.AllowUserToAddRows = false;
         }
 
         //---------------------------------------------------------------------------------------------------------------------
@@ -963,56 +967,64 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button6_Click(object sender, EventArgs e)
         {
-
-            // размерность таблицы
-            int N = dataGridView1.Rows.Count;
-            int M = dataGridView1.Columns.Count;
-
-            // стратегии, для которых добавляются веса
-            string str1 = textBox10.Text;
-            string str2 = textBox11.Text;
-
-            // добавляемый вес
-            int val = Convert.ToInt32(textBox12.Text);
-
-            // индексы-координаты ячейки для записи
-            int ind_1 = 0;
-            int ind_2 = 0;
-
-            // флаги проверки нахождения стратегий
-            bool check1 = false;
-            bool check2 = false;
-
-
-            // поиск индекса первой стратегии с ЗАДАННЫМ ИМЕНЕМ в таблице
-            for (int j = 1; j < N; j++)
+            // проверка инициализации матрицы
+            if (initial_check())
             {
-                if (Convert.ToString(dataGridView1.Rows[j].Cells[1].Value) == str1)
+
+                // размерность таблицы
+                int N = dataGridView1.Rows.Count;
+                int M = dataGridView1.Columns.Count;
+
+                // стратегии, для которых добавляются веса
+                string str1 = textBox10.Text;
+                string str2 = textBox11.Text;
+
+                // добавляемый вес
+                int val = Convert.ToInt32(textBox12.Text);
+
+                // индексы-координаты ячейки для записи
+                int ind_1 = 0;
+                int ind_2 = 0;
+
+                // флаги проверки нахождения стратегий
+                bool check1 = false;
+                bool check2 = false;
+
+
+                // поиск индекса первой стратегии с ЗАДАННЫМ ИМЕНЕМ в таблице
+                for (int j = 1; j < N; j++)
                 {
-                    ind_1 = j;
-                    check2 = true;
+                    if (Convert.ToString(dataGridView1.Rows[j].Cells[1].Value) == str1)
+                    {
+                        ind_1 = j;
+                        check2 = true;
+                    }
+                }
+
+                // поиск индекса второй стратегии с ЗАДАННЫМ ИМЕНЕМ в таблице
+                for (int i = 1; i < M; i++)
+                {
+                    if (Convert.ToString(dataGridView1.Rows[1].Cells[i].Value) == str2)
+                    {
+                        ind_2 = i;
+                        check1 = true;
+                    }
+                }
+
+                // проверка и добавление веса в таблицу
+                if ((check2 == true) && (check2 == true))
+                {
+                    dataGridView1.Rows[ind_1].Cells[ind_2].Value = val;
+                    MessageBox.Show("Вес добавлен!", "Сообщение");
+                }
+                else
+                {
+                    MessageBox.Show("Одна или обе стратегии отсутствуют в таблице!", "Ошибка");
                 }
             }
-
-            // поиск индекса второй стратегии с ЗАДАННЫМ ИМЕНЕМ в таблице
-            for (int i = 1; i < M; i++)
+            else // иначе...
             {
-                if (Convert.ToString(dataGridView1.Rows[1].Cells[i].Value) == str2)
-                {
-                    ind_2 = i;
-                    check1 = true;
-                }
-            }
-
-            // проверка и добавление веса в таблицу
-            if ((check2 == true) && (check2 == true))
-            {
-                dataGridView1.Rows[ind_1].Cells[ind_2].Value = val;
-                MessageBox.Show("Вес добавлен!", "Сообщение");
-            }
-            else
-            {
-                MessageBox.Show("Одна или обе стратегии отсутствуют в таблице!", "Ошибка");
+                MessageBox.Show("Сначала инициализируйте матрицу!", "Ошибка");
             }
 
         }
@@ -1023,7 +1035,6 @@ namespace MS_LR_1
         private void button3_Click(object sender, EventArgs e)
         {
             // проверка инициализации матрицы
-
             if (initial_check())
             {
                 // поиск максимина 

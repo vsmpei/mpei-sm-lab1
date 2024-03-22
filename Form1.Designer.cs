@@ -99,6 +99,7 @@ namespace MS_LR_1
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBox4);
@@ -109,9 +110,9 @@ namespace MS_LR_1
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(492, 35);
+            this.groupBox1.Location = new System.Drawing.Point(469, 35);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(288, 241);
+            this.groupBox1.Size = new System.Drawing.Size(273, 256);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -183,12 +184,13 @@ namespace MS_LR_1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(102, 207);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.Location = new System.Drawing.Point(96, 201);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(81, 29);
             this.button1.TabIndex = 1;
             this.button1.Text = "Создать";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label1
@@ -203,6 +205,7 @@ namespace MS_LR_1
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox2.Controls.Add(this.textBox7);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.textBox6);
@@ -211,9 +214,9 @@ namespace MS_LR_1
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(815, 35);
+            this.groupBox2.Location = new System.Drawing.Point(748, 35);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(307, 241);
+            this.groupBox2.Size = new System.Drawing.Size(307, 256);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
@@ -270,12 +273,13 @@ namespace MS_LR_1
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(109, 207);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button2.Location = new System.Drawing.Point(108, 201);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(81, 29);
             this.button2.TabIndex = 3;
             this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
@@ -290,6 +294,7 @@ namespace MS_LR_1
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.button4);
@@ -300,7 +305,7 @@ namespace MS_LR_1
             this.groupBox3.Controls.Add(this.textBox9);
             this.groupBox3.Controls.Add(this.textBox8);
             this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Location = new System.Drawing.Point(30, 303);
+            this.groupBox3.Location = new System.Drawing.Point(30, 297);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(433, 261);
             this.groupBox3.TabIndex = 3;
@@ -308,19 +313,20 @@ namespace MS_LR_1
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(254, 163);
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button5.Location = new System.Drawing.Point(254, 170);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(81, 29);
             this.button5.TabIndex = 11;
             this.button5.Text = "Удалить";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(213, 135);
+            this.label15.Location = new System.Drawing.Point(213, 142);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(176, 15);
             this.label15.TabIndex = 10;
@@ -328,12 +334,13 @@ namespace MS_LR_1
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button4.Location = new System.Drawing.Point(254, 91);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(81, 29);
             this.button4.TabIndex = 9;
             this.button4.Text = "Удалить";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label14
@@ -348,12 +355,13 @@ namespace MS_LR_1
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(37, 210);
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button3.Location = new System.Drawing.Point(47, 207);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 22);
+            this.button3.Size = new System.Drawing.Size(81, 29);
             this.button3.TabIndex = 7;
             this.button3.Text = "Найти";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label12
@@ -402,6 +410,7 @@ namespace MS_LR_1
             // 
             // groupBox4
             // 
+            this.groupBox4.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox4.Controls.Add(this.button6);
             this.groupBox4.Controls.Add(this.textBox12);
             this.groupBox4.Controls.Add(this.label18);
@@ -410,20 +419,21 @@ namespace MS_LR_1
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Location = new System.Drawing.Point(492, 303);
+            this.groupBox4.Location = new System.Drawing.Point(469, 297);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(288, 261);
+            this.groupBox4.Size = new System.Drawing.Size(273, 261);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(102, 211);
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button6.Location = new System.Drawing.Point(96, 207);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 24);
+            this.button6.Size = new System.Drawing.Size(81, 29);
             this.button6.TabIndex = 7;
             this.button6.Text = "Добавить";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // textBox12
@@ -489,6 +499,7 @@ namespace MS_LR_1
             // 
             // groupBox5
             // 
+            this.groupBox5.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox5.Controls.Add(this.textBox14);
             this.groupBox5.Controls.Add(this.textBox13);
             this.groupBox5.Controls.Add(this.button9);
@@ -498,7 +509,7 @@ namespace MS_LR_1
             this.groupBox5.Controls.Add(this.button7);
             this.groupBox5.Controls.Add(this.label20);
             this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Location = new System.Drawing.Point(815, 303);
+            this.groupBox5.Location = new System.Drawing.Point(748, 297);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(307, 261);
             this.groupBox5.TabIndex = 5;
@@ -506,12 +517,13 @@ namespace MS_LR_1
             // 
             // button9
             // 
+            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button9.Location = new System.Drawing.Point(41, 128);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(81, 29);
             this.button9.TabIndex = 6;
             this.button9.Text = "Загрузить";
-            this.button9.UseVisualStyleBackColor = true;
+            this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // label23
@@ -525,18 +537,19 @@ namespace MS_LR_1
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(41, 204);
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button8.Location = new System.Drawing.Point(41, 207);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(81, 29);
             this.button8.TabIndex = 4;
             this.button8.Text = "Заполнить";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 177);
+            this.label21.Location = new System.Drawing.Point(8, 186);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(170, 13);
             this.label21.TabIndex = 3;
@@ -544,12 +557,13 @@ namespace MS_LR_1
             // 
             // button7
             // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button7.Location = new System.Drawing.Point(185, 128);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(81, 29);
             this.button7.TabIndex = 2;
             this.button7.Text = "Выгрузить";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label20
@@ -600,7 +614,8 @@ namespace MS_LR_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1154, 593);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(1080, 583);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
