@@ -197,68 +197,76 @@ namespace MS_LR_1
             // номера столбцов для удаления 
             SortedSet<int> column_nums = new SortedSet<int>();
 
-            // с первой строки для первого цикла 
+            // НАЧИНАЯ с первой строки для первого цикла 
             int i = 2;
-            // со второй строки для второго цикла 
+            // НАЧИНАЯ со второй строки для второго цикла 
             int j = 3;
             // для по элементного сравнения строк (по столбцам) 
             int k;
-            // флаг проверки условия
-            bool flag_k;
+
+            // флаг выхода и цикла по элементам, в случае
+            // если хотя бы элемент строки i+1 больше элемента iой
+            bool flag_k = true;
+
             // дополнительный счетчик
-            int kol;
+            //int kol;
 
             //---------------------------------------------------------------------------------------------------------
             // П О  С Т Р О К А М 
             // c первой строки
             while (i < N - 1)
             {
-                // обнуляем счетчик найденных строк
-                kol = 0;
+
+                // начиная со следующего...
+                j = i + 1;
+
+                flag_k = true; // переходим к следующему циклу проверок 
+
 
                 // со второй строки 
-                while (j < N)
+                while ((j < N) && (flag_k == true))
+               // while (j < N)
                 {
                     // с первого столбца  
                     k = 2;
                     // пока все ок 
-                    flag_k = true;
+                    //flag_k = true;
 
                     // по столбцам (по-элементно)
                     while ((k < M) && (flag_k == true))
                     {
+                        MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
+
                         // если хотя бы один элемент у первой строки СТРОГО больше чем у второй...
-                        if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) > Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
+                        if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) < Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
                         {
-                            // выходим из цикла
+                            //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
+                            // выходим из цикла по элементам
                             flag_k = false;
                         }
 
+                        //MessageBox.Show(Convert.ToString(k));
                         // переходим к следующему элементу 
                         k++;
                     }
 
-                    // если были пройдены все элементы строки, значит, все элементы данной строки СТРОГО больше чем у первой, а значит... 
-                    if (k == (M - 2))
-                    {
-                        // записываем номер строки 
-                        row_nums.Add(j);
-                        // увеличиваем счетчик строк
-                        kol++;
-                    }
+                    //MessageBox.Show(Convert.ToString(j));
 
                     // переходим к следующей строке
                     j++;
                 }
 
-                // если нет ни одной строки, которая была бы строго больше данной 
-                if (kol == 0)
+                // если НЕ было выхода из цикла =>
+                // => данная строка больше всех остальных
+                // по КАЖДОМУ элементу!
+                if (flag_k == true)
                 {
                     // записываем номер строки 
                     row_nums.Add(i);
                 }
 
-                // переходим к следующуй строке
+                
+                // переходим к следующей строке
                 i++;
             }
 
@@ -269,8 +277,8 @@ namespace MS_LR_1
                 foreach (var ind in row_nums.Reverse())
                 {
                     // удаляем строки с найденными номерами...
-                    dataGridView1.Rows.RemoveAt(ind);
-                    //MessageBox.Show(Convert.ToString(ind));
+                    //dataGridView1.Rows.RemoveAt(ind);
+                    MessageBox.Show(Convert.ToString(ind));
                 }
             }
 
@@ -288,66 +296,76 @@ namespace MS_LR_1
             // номера столбцов для удаления 
             SortedSet<int> column_nums = new SortedSet<int>();
 
-            // с первой строки для первого цикла 
+            // НАЧИНАЯ с первой строки для первого цикла 
             int i = 2;
-            // со второй строки для второго цикла 
+            // НАЧИНАЯ со второй строки для второго цикла 
             int j = 3;
             // для по элементного сравнения строк (по столбцам) 
             int k;
-            // флаг проверки условия
-            bool flag_k;
-            // дополнительный счетчик
-            int kol;
 
+            // флаг выхода и цикла по элементам, в случае
+            // если хотя бы элемент строки i+1 больше элемента iой
+            bool flag_k = true;
+
+            // дополнительный счетчик
+            //int kol;
+
+            //---------------------------------------------------------------------------------------------------------
+            // П О  С Т Р О К А М 
             // c первой строки
             while (i < N - 1)
             {
-                // обнуляем счетчик найденных строк
-                kol = 0;
+
+                // начиная со следующего...
+                j = i + 1;
+
+                flag_k = true; // переходим к следующему циклу проверок 
+
 
                 // со второй строки 
-                while (j < N)
+                while ((j < N) && (flag_k == true))
+                // while (j < N)
                 {
                     // с первого столбца  
                     k = 2;
                     // пока все ок 
-                    flag_k = true;
+                    //flag_k = true;
 
                     // по столбцам (по-элементно)
                     while ((k < M) && (flag_k == true))
                     {
+                        MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
+
                         // если хотя бы один элемент у первой строки СТРОГО больше чем у второй...
-                        if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) > Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
+                        if (Convert.ToInt32(dataGridView1.Rows[i].Cells[k].Value) <= Convert.ToInt32(dataGridView1.Rows[j].Cells[k].Value))
                         {
-                            // выходим из цикла
+                            //MessageBox.Show(Convert.ToString(dataGridView1.Rows[i].Cells[k].Value) + " и " + Convert.ToString(dataGridView1.Rows[j].Cells[k].Value));
+                            // выходим из цикла по элементам
                             flag_k = false;
                         }
 
+                        //MessageBox.Show(Convert.ToString(k));
                         // переходим к следующему элементу 
                         k++;
                     }
 
-                    // если были пройдены все элементы строки, значит, все элементы данной строки СТРОГО больше чем у первой, а значит... 
-                    if (k == (M - 2))
-                    {
-                        // записываем номер строки 
-                        row_nums.Add(j);
-                        // увеличиваем счетчик строк
-                        kol++;
-                    }
+                    //MessageBox.Show(Convert.ToString(j));
 
                     // переходим к следующей строке
                     j++;
                 }
 
-                // если нет ни одной строки, которая была бы строго больше данной 
-                if (kol == 0)
+                // если НЕ было выхода из цикла =>
+                // => данная строка больше всех остальных
+                // по КАЖДОМУ элементу!
+                if (flag_k == true)
                 {
                     // записываем номер строки 
                     row_nums.Add(i);
                 }
 
-                // переходим к следующуй строке
+
+                // переходим к следующей строке
                 i++;
             }
 
