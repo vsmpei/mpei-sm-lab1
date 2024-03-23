@@ -63,8 +63,8 @@
 Веса для каждой ситуации генерируются случайно из диапазона [-10; 10].
 |Матрица игры до заполнения|Матрица игры после заполнения|
 |:-:|:-:|
-|![random_1](https://github.com/vsmpei/mpei-sm-lab1/tree/master/Images/random_1.PNG)|![random_2](https://github.com/vsmpei/mpei-sm-lab1/tree/master/Images/random_2.PNG)|
+|![random_1](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/random_1.PNG)|![random_2](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/random_2.PNG)|
 ### История изменений
 Приложение поодерживает просмотр истории изменений модели.\
 \
-![history](https://github.com/vsmpei/mpei-sm-lab1/tree/master/Images/history.PNG)
+![history](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/history.PNG)
