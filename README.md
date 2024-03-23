@@ -54,7 +54,7 @@
 ```
 |Содержание текстового файла|Результат загрузки|
 |:-:|:-:|
-|![load](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/load.PNG)|![load_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/load_m.PNG)|
+|![load](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/loadPNG.PNG)|![load_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/load_m.PNG)|
 ### Выгрузка модели в файл
 |Матрица игры|Содержание текстового файла|
 |:-:|:-:|
