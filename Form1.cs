@@ -105,7 +105,7 @@ namespace MS_LR_1
         }
 
         // ЗАГРУЗКА ИЗ ФАЙЛА 
-        private void load_from_file (string file_name)
+        private bool load_from_file (string file_name)
         {
             // строка для чтения из файла
             string read_str = "";
@@ -122,78 +122,91 @@ namespace MS_LR_1
             // читаем вторую строку с количеством стратегий второго игрока
             M = Convert.ToInt32(sr.ReadLine()) + 2; // отступы, первая и вторая строка заняты...
 
-            // количество стратегий первого игрока  
-            dataGridView1.RowCount = N;
-            // количество стратегий второго игрока
-            dataGridView1.ColumnCount = M;
-
-            // читаем третью строку с именем ПЕРВОГО игрока 
-            dataGridView1.Rows[1].Cells[0].Value = sr.ReadLine();
-            // читаем четвертую строку с именем ВТОРОГО игрока
-            dataGridView1.Rows[0].Cells[1].Value = sr.ReadLine();
-
-            // ввод стратегий ПЕРВОГО игрока
-            for (int i = 2; i < N; i++)
+            // проверка считанной размерности из матрицы
+            if ((M > 2) || (N > 2))
             {
-                // читаем из потока очередную строку
-                read_str = sr.ReadLine();
+                // количество стратегий первого игрока  
+                dataGridView1.RowCount = N;
+                // количество стратегий второго игрока
+                dataGridView1.ColumnCount = M;
 
-                // если поток вернул нам null
-                if (String.IsNullOrEmpty(read_str))
-                {
-                    dataGridView1.Rows[i].Cells[1].Value = "missing_content"; // значит строка пустая
-                }
-                // во всех остальных случаях
-                else
-                {
-                    dataGridView1.Rows[i].Cells[1].Value = read_str;
-                }
+                // читаем третью строку с именем ПЕРВОГО игрока 
+                dataGridView1.Rows[1].Cells[0].Value = sr.ReadLine();
+                // читаем четвертую строку с именем ВТОРОГО игрока
+                dataGridView1.Rows[0].Cells[1].Value = sr.ReadLine();
 
-            }
-
-            // ввод стратегий ВТОРОГО игрока
-            for (int j = 2; j < M; j++)
-            {
-                // читаем из потока очередную строку
-                read_str = sr.ReadLine();
-
-                // если поток вернул нам null
-                if (String.IsNullOrEmpty(read_str))
+                // ввод стратегий ПЕРВОГО игрока
+                for (int i = 2; i < N; i++)
                 {
-                    dataGridView1.Rows[1].Cells[j].Value = "missing_content"; // значит строка пустая
-                }
-                // во всех остальных случаях
-                else
-                {
-                    dataGridView1.Rows[1].Cells[j].Value = read_str;
+                    // читаем из потока очередную строку
+                    read_str = sr.ReadLine();
+
+                    // если поток вернул нам null
+                    if (String.IsNullOrEmpty(read_str))
+                    {
+                        dataGridView1.Rows[i].Cells[1].Value = "missing_content"; // значит строка пустая
+                    }
+                    // во всех остальных случаях
+                    else
+                    {
+                        dataGridView1.Rows[i].Cells[1].Value = read_str;
+                    }
+
                 }
 
-            }
-
-            //пустая строка
-            read_str = "";
-
-            // цикл по строкам
-            for (int i = 2; i < N; i++)
-            {
-                // читаем первую строку
-                read_str = sr.ReadLine();
-                // разбиваем на отдельные строки 
-                chisl = read_str.Split(' ');
-
-                // цикл по столбцам 
+                // ввод стратегий ВТОРОГО игрока
                 for (int j = 2; j < M; j++)
                 {
-                    // присваиваем значение клетке
-                    // почему -2? Потому что таблица смещена относительно [0,0]
-                    // а массив строк начинается 0
-                    dataGridView1.Rows[i].Cells[j].Value = Convert.ToInt32(chisl[j - 2]);
+                    // читаем из потока очередную строку
+                    read_str = sr.ReadLine();
+
+                    // если поток вернул нам null
+                    if (String.IsNullOrEmpty(read_str))
+                    {
+                        dataGridView1.Rows[1].Cells[j].Value = "missing_content"; // значит строка пустая
+                    }
+                    // во всех остальных случаях
+                    else
+                    {
+                        dataGridView1.Rows[1].Cells[j].Value = read_str;
+                    }
+
                 }
 
-            }
+                //пустая строка
+                read_str = "";
 
-            // закрываем поток чтения
-            sr.Close();
+                // цикл по строкам
+                for (int i = 2; i < N; i++)
+                {
+                    // читаем первую строку
+                    read_str = sr.ReadLine();
+                    // разбиваем на отдельные строки 
+                    chisl = read_str.Split(' ');
+
+                    // цикл по столбцам 
+                    for (int j = 2; j < M; j++)
+                    {
+                        // присваиваем значение клетке
+                        // почему -2? Потому что таблица смещена относительно [0,0]
+                        // а массив строк начинается 0
+                        dataGridView1.Rows[i].Cells[j].Value = Convert.ToInt32(chisl[j - 2]);
+                    }
+                 
+                }
+                // закрываем поток чтения
+                sr.Close();
+
+                return true;
+            }
+            else // ошибка при чтении размерности матрицы весов
+            {
+                MessageBox.Show("Размерность матрицы весов в файле указана ошибочно!", "Ошибка");
+                // закрываем поток чтения
+                sr.Close();
+
+                return false;
+            }
 
         }
 
@@ -861,7 +874,7 @@ namespace MS_LR_1
                     sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Выгрузка игры в файл");
                     break;
                 case 6:
-                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Рандомная генерация весов");
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Случайная генерация весов");
                     break;
                 case 7:
                     sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Поиск максимина");
@@ -878,8 +891,14 @@ namespace MS_LR_1
                 case 101:
                     sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка выполнить операцию при отсутствии инциализации");
                     break;
+                case 102:
+                    sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка чтения отсутствующего файла");
+                    break;
+                case 103:
+                    sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Содержимое файла с данными повреждено");
+                    break;
                 default:
-                    sw.WriteLine(DateTime.Now + " " + "Предупреждение: " + "Неизвестная команда");
+                    sw.WriteLine(DateTime.Now + " " + "Предупреждение: " + "Неизвестная ошибка");
                     break;
             }
 
@@ -1040,8 +1059,6 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button6_Click(object sender, EventArgs e)
         {
-            // вызов метода ведения логов
-            log_writer(3);
 
             // проверка инициализации матрицы
             if (initial_check())
@@ -1091,6 +1108,8 @@ namespace MS_LR_1
                 if ((check2 == true) && (check2 == true))
                 {
                     dataGridView1.Rows[ind_1].Cells[ind_2].Value = val;
+                    // вызов метода ведения логов
+                    log_writer(3);
                     MessageBox.Show("Вес добавлен!", "Сообщение");
                 }
                 else
@@ -1185,13 +1204,23 @@ namespace MS_LR_1
             // проверка существования файла 
             if(file_check(file_name)) // если существует
             {
-                load_from_file(file_name);
-                // вызов метода ведения логов
-                log_writer(4);
-                MessageBox.Show("Игра была загружена из файла!", "Сообщение");
+                if (load_from_file(file_name))
+                {
+                    // вызов метода ведения логов
+                    log_writer(4);
+                    MessageBox.Show("Игра была загружена из файла!", "Сообщение");
+                }
+                else 
+                {
+                    // вызов метода ведения логов
+                    log_writer(103);
+                    MessageBox.Show("Игра не была загружена из файла!", "Сообщение");
+                }
             }
             else // иначе...
             {
+                // вызов метода ведения логов
+                log_writer(102);
                 MessageBox.Show("Файл с данным именем отсутствует!", "Ошибка");
             }
             
