@@ -240,7 +240,7 @@ namespace MS_LR_1
                 // выводим стратегии в файл
                 sw.WriteLine("Стратегии: \n");
                 // вывод стратегий ВТОРОГО игрока
-                for (int j = 1; j < N; j++)
+                for (int j = 2; j < N; j++)
                 {
                     // если стартегия не пустая
                     if (Convert.ToString(dataGridView1.Rows[j].Cells[1].Value) != "")
@@ -259,7 +259,7 @@ namespace MS_LR_1
                 // очищем строку 
                 res_str = "";
                 // вывод стратегий ВТОРОГО игрока
-                for (int i = 1; i < M; i++)
+                for (int i = 2; i < M; i++)
                 {
                     if (Convert.ToString(dataGridView1.Rows[1].Cells[i].Value) != "")
                     {
