@@ -12,12 +12,12 @@
 Для ручного задания стратегии нужно указать имя игрока, номер новой стратегии и ее название. 
 |Элемент приложения|Результат работы|
 |:-:|:-:|
-|![strategy](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/strategy.PNG)|![strategy_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/strategy_m.PNG)|
+|![strategy](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/strategy.PNG)|![strategy_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/startegy_m.PNG)|
 ### Добавление весов
 Для ручного добавления весов нужно указать названия стратегий обоих игроков, образующих ситуацию, и значение веса - выигрыш первого игрока в этой ситации. 
 |Элемент приложения|Результат работы|
 |:-:|:-:|
-|![weight](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/weigth.PNG)|![weigth_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/weigth_m.PNG)|
+|![weight](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/weight.PNG)|![weigth_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/weight_m.PNG)|
 ## Решение игры
 ### Поиск максимина и минимакса
 Принцип максимина - максимизация своего результата при наихудшем (для себя) выборе соперника. Максимин ищется для первого игрока. Для второго игрока ищется минимакс, обратный максимину. При совпадении максимина и минимакса это значение явлется седловой точкой, и ситуация считается возможным решением игры. В данном примере максимин и минимакс равны -4, и решением игры считается ситуация (Действие 3; Действие 2).
