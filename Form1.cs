@@ -897,6 +897,12 @@ namespace MS_LR_1
                 case 103:
                     sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Содержимое файла с данными повреждено");
                     break;
+                case 104:
+                    sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка добавления стратегии для несуществующего игрока");
+                    break;
+                case 105:
+                    sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка добавления веса отсутствующий паре стратегий");
+                    break;
                 default:
                     sw.WriteLine(DateTime.Now + " " + "Предупреждение: " + "Неизвестная ошибка");
                     break;
@@ -1044,6 +1050,7 @@ namespace MS_LR_1
                 // если игрок не был найден и значение находится в диапазоне
                 else
                 {
+                    log_writer(104);
                     MessageBox.Show("Игрок с таким именем не найден!", "Ошибка");
                 }
             }
@@ -1114,6 +1121,7 @@ namespace MS_LR_1
                 }
                 else
                 {
+                    log_writer(105);
                     MessageBox.Show("Одна или обе стратегии отсутствуют в таблице!", "Ошибка");
                 }
             }

@@ -35,6 +35,7 @@ namespace MS_LR_1
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox1.Location = new System.Drawing.Point(12, 39);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -57,6 +58,7 @@ namespace MS_LR_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(385, 290);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
