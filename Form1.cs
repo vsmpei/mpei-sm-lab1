@@ -1044,7 +1044,7 @@ namespace MS_LR_1
                 {
                     // проверка диапазона 
                     // не должен быть равен или меньше 0 ИЛИ быть больше чем размер таблицы, -1 т.к. платежная матрица СМЕЩЕНА
-                    if ((!(ind > dataGridView1.Rows.Count - 1) && !(ind <= 0) && !(ind-1<= 0)))
+                    if ((!(ind > dataGridView1.Rows.Count - 1) && !(ind <= 0) && !(ind-1<=0)))
                     {
                         dataGridView1.Rows[ind].Cells[1].Value = textBox7.Text;
                     }
@@ -1121,7 +1121,7 @@ namespace MS_LR_1
                 }
 
                 // проверка и добавление веса в таблицу
-                if ((check2 == true) && (check2 == true))
+                if ((check1 == true) && (check2 == true))
                 {
                     dataGridView1.Rows[ind_1].Cells[ind_2].Value = val;
                     // вызов метода ведения логов
