@@ -288,19 +288,27 @@ namespace MS_LR_1
                 // инициализируем поток 
                 StreamWriter sw = new StreamWriter(file_name);
 
-                // выводим игроков в файл
-                sw.WriteLine("Игроки: \n");
-                // имя ВТОРОГО игрока
-                res_str = Convert.ToString(dataGridView1.Rows[0].Cells[1].Value);
+                // количество стратегий первого игрока с учетом сдвига
+                res_str = Convert.ToString(dataGridView1.Rows.Count-2);
+                sw.WriteLine(res_str);
+                // количество стратегий второго игрока с учетом сдвига
+                res_str = Convert.ToString(dataGridView1.Columns.Count-2);
+                sw.WriteLine(res_str);
+
+                // выводим никнеймы игроков в файл
+                //sw.WriteLine("Игроки: \n");
+                // имя ПЕРВОГО игрока
+                res_str = Convert.ToString(dataGridView1.Rows[1].Cells[0].Value);
                 sw.WriteLine(res_str);
                 res_str = "";
                 // имя ВТОРОГО игрока
-                res_str = Convert.ToString(dataGridView1.Rows[1].Cells[0].Value) + "\n";
+                //res_str = Convert.ToString(dataGridView1.Rows[1].Cells[0].Value) + "\n";
+                res_str = Convert.ToString(dataGridView1.Rows[0].Cells[1].Value);
                 sw.WriteLine(res_str);
                 res_str = "";
 
                 // выводим стратегии в файл
-                sw.WriteLine("Стратегии: \n");
+                //sw.WriteLine("Стратегии: \n");
                 // вывод стратегий ВТОРОГО игрока
                 for (int j = 2; j < N; j++)
                 {
@@ -317,7 +325,7 @@ namespace MS_LR_1
                     }
                 }
                 // отступ в файле
-                sw.WriteLine("\n");
+                //sw.WriteLine("\n");
                 // очищем строку 
                 res_str = "";
                 // вывод стратегий ВТОРОГО игрока
@@ -336,14 +344,14 @@ namespace MS_LR_1
                 }
 
                 // отступ в файле
-                sw.WriteLine("\n");
+                //sw.WriteLine("\n");
                 // очищем строку 
                 res_str = "";
 
                 // вывод весов в файл
-                res_str = "Веса: \n";
-                sw.WriteLine(res_str);
-                res_str = "";
+                //res_str = "Веса: \n";
+                //sw.WriteLine(res_str);
+                //res_str = "";
                 // записываем в файл веса
                 // по всей платежной матрице, но не таблице!
                 for (int i = 2; i < N; i++)
