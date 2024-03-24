@@ -906,6 +906,9 @@ namespace MS_LR_1
                 case 106:
                     sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка добавления стратегии по индексу, выходящему за заданный диапазон значений");
                     break;
+                case 107:
+                    sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка добавления нечислового значения в матрицу весов");
+                    break;
                 default:
                     sw.WriteLine(DateTime.Now + " " + "Предупреждение: " + "Неизвестная ошибка");
                     break;
@@ -1089,49 +1092,61 @@ namespace MS_LR_1
                 string str2 = textBox11.Text;
 
                 // добавляемый вес
-                int val = Convert.ToInt32(textBox12.Text);
+                int val;
 
-                // индексы-координаты ячейки для записи
-                int ind_1 = 0;
-                int ind_2 = 0;
-
-                // флаги проверки нахождения стратегий
-                bool check1 = false;
-                bool check2 = false;
-
-
-                // поиск индекса первой стратегии с ЗАДАННЫМ ИМЕНЕМ в таблице
-                for (int j = 1; j < N; j++)
+                if (int.TryParse(textBox12.Text, out val))
                 {
-                    if (Convert.ToString(dataGridView1.Rows[j].Cells[1].Value) == str1)
+                    // добавляемый вес
+                   // int val = Convert.ToInt32(textBox12.Text);
+
+                    // индексы-координаты ячейки для записи
+                    int ind_1 = 0;
+                    int ind_2 = 0;
+
+                    // флаги проверки нахождения стратегий
+                    bool check1 = false;
+                    bool check2 = false;
+
+
+                    // поиск индекса первой стратегии с ЗАДАННЫМ ИМЕНЕМ в таблице
+                    for (int j = 1; j < N; j++)
                     {
-                        ind_1 = j;
-                        check2 = true;
+                        if (Convert.ToString(dataGridView1.Rows[j].Cells[1].Value) == str1)
+                        {
+                            ind_1 = j;
+                            check2 = true;
+                        }
+                    }
+
+                    // поиск индекса второй стратегии с ЗАДАННЫМ ИМЕНЕМ в таблице
+                    for (int i = 1; i < M; i++)
+                    {
+                        if (Convert.ToString(dataGridView1.Rows[1].Cells[i].Value) == str2)
+                        {
+                            ind_2 = i;
+                            check1 = true;
+                        }
+                    }
+
+                    // проверка и добавление веса в таблицу
+                    if ((check1 == true) && (check2 == true))
+                    {
+                        dataGridView1.Rows[ind_1].Cells[ind_2].Value = val;
+                        // вызов метода ведения логов
+                        log_writer(3);
+                        MessageBox.Show("Вес добавлен!", "Сообщение");
+                    }
+                    else
+                    {
+                        log_writer(105);
+                        MessageBox.Show("Одна или обе стратегии отсутствуют в таблице!", "Ошибка");
                     }
                 }
-
-                // поиск индекса второй стратегии с ЗАДАННЫМ ИМЕНЕМ в таблице
-                for (int i = 1; i < M; i++)
+                else 
                 {
-                    if (Convert.ToString(dataGridView1.Rows[1].Cells[i].Value) == str2)
-                    {
-                        ind_2 = i;
-                        check1 = true;
-                    }
-                }
-
-                // проверка и добавление веса в таблицу
-                if ((check1 == true) && (check2 == true))
-                {
-                    dataGridView1.Rows[ind_1].Cells[ind_2].Value = val;
-                    // вызов метода ведения логов
-                    log_writer(3);
-                    MessageBox.Show("Вес добавлен!", "Сообщение");
-                }
-                else
-                {
-                    log_writer(105);
-                    MessageBox.Show("Одна или обе стратегии отсутствуют в таблице!", "Ошибка");
+                    log_writer(107);
+                    MessageBox.Show("Введенное значение не является числом!", "Ошибка");
+                    MessageBox.Show("Введенное значение должно быть целым знаковым числом!", "Подсказка");
                 }
             }
             else // иначе...
