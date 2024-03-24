@@ -929,6 +929,12 @@ namespace MS_LR_1
                 case 108:
                     sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка загрузки/выгрузки из/в файл с неподдерживаемым форматом");
                     break;
+                case 109:
+                    sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка ввода нечислового значения в поле с числовым значением");
+                    break;
+                case 110:
+                    sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка ввода нулевых или отрицательных значений в поле ввода количества стратегий");
+                    break;
                 default:
                     sw.WriteLine(DateTime.Now + " " + "Предупреждение: " + "Неизвестная ошибка");
                     break;
@@ -999,16 +1005,45 @@ namespace MS_LR_1
             // удаляем все СТАРЫЕ столбцы
             dataGridView1.Columns.Clear();
 
-            if ((Convert.ToInt32(textBox3.Text) > 2) && (Convert.ToInt32(textBox4.Text) > 2))
+            // переменные для проверки 
+            int N, M;
+
+            // проверка типа введенного количества стратегий N
+            if (!(int.TryParse(textBox3.Text, out N)))
+            {
+                log_writer(109);
+                MessageBox.Show("Введенное значение не является числом!", "Ошибка");
+                MessageBox.Show("Введенное значение должно быть целым знаковым числом!", "Подсказка");
+                // не люблю break, return из void, но я ОЧЕНЬ устал...
+                return;
+            }
+
+            // проверка типа введенного количества стратегий M
+            if (!(int.TryParse(textBox4.Text, out M)))
+            {
+                log_writer(109);
+                MessageBox.Show("Введенное значение не является числом!", "Ошибка");
+                MessageBox.Show("Введенное значение должно быть целым знаковым числом!", "Подсказка");
+                // не люблю break, return из void, но я ОЧЕНЬ устал...
+                return;
+            }
+
+            // сдвиг относительно начала (0,0) на 2, т.к. часть строк/столбцов заняты никами игроков 
+            M = M + 2;
+            N = N + 2;
+
+            //if ((Convert.ToInt32(textBox3.Text) > 2) && (Convert.ToInt32(textBox4.Text) > 2))
+            if ((N > 2) && (M > 2))
             {
                 // очищаем dataGridView1
                 // dataGridView1.Rows.Clear();
 
                 // количество стратегий первого игрока  
-                dataGridView1.RowCount = Convert.ToInt32(textBox3.Text) + 2;
-
+                //dataGridView1.RowCount = Convert.ToInt32(textBox3.Text) + 2;
+                dataGridView1.RowCount = N;
                 // количество второго игрока
-                dataGridView1.ColumnCount = Convert.ToInt32(textBox4.Text) + 2;
+                //dataGridView1.ColumnCount = Convert.ToInt32(textBox4.Text) + 2;
+                dataGridView1.ColumnCount = M;
 
                 // первый игрок 
                 dataGridView1.Rows[0].Cells[1].Value = textBox1.Text;
@@ -1023,7 +1058,9 @@ namespace MS_LR_1
             }
             else
             {
-                MessageBox.Show("Количество строк и столбцов должно быть больше 2!", "Ошибка");
+                log_writer(110);
+                MessageBox.Show("Количество стратегий введено с ошибкой!", "Ошибка");
+                MessageBox.Show("Количество стратегий не должно быть отрицательным и должно быть больше 0!", "Подсказка");
             }
         }
 
@@ -1042,7 +1079,22 @@ namespace MS_LR_1
                 string name = textBox5.Text;
 
                 // номер стратегии / индекс 
-                int ind = Convert.ToInt32(textBox6.Text) + 1; // +1 т.к. таблица смещена относительно первой ячейки (0,0)
+                int ind;
+
+                // проверка типа введенного номера стратегии
+                if (int.TryParse(textBox6.Text, out ind))
+                {
+                    ind++; // +1 т.к. таблица смещена относительно первой ячейки (0,0)
+                    MessageBox.Show(Convert.ToString(ind));
+                }
+                else 
+                {
+                    log_writer(109);
+                    MessageBox.Show("Введенное значение не является числом!", "Ошибка");
+                    MessageBox.Show("Введенное значение должно быть целым знаковым числом!", "Подсказка");
+                    // не люблю break, return из void, но я ОЧЕНЬ устал...
+                    return;
+                }
 
                 // заполнение стратегии для конкретного игрока
                 // для первого, т.к. индекс имени игрока ПОСТОЯНЕН
