@@ -104,6 +104,23 @@ namespace MS_LR_1
             }
         }
 
+        // ПРОВЕРКА ФОРМАТА ФАЙЛА
+        private bool file_format_check(string file_name)
+        {
+            // получаем расширение файла по пути к нему 
+            String file_ext = Path.GetExtension(file_name);
+            if(file_ext == ".txt") // если формат текстовый то...
+            {
+                return true;
+            }
+            else // иначе...
+            {
+                MessageBox.Show("Данный формат файла не поддерживается!", "Ошибка");
+                MessageBox.Show("Для загрузки и выгрузки игры используйте текстовый формат файла .txt!", "Подсказка");
+                return false;
+            }
+        }
+
         // ЗАГРУЗКА ИЗ ФАЙЛА 
         private bool load_from_file (string file_name)
         {
@@ -909,6 +926,9 @@ namespace MS_LR_1
                 case 107:
                     sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка добавления нечислового значения в матрицу весов");
                     break;
+                case 108:
+                    sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка загрузки/выгрузки из/в файл с неподдерживаемым форматом");
+                    break;
                 default:
                     sw.WriteLine(DateTime.Now + " " + "Предупреждение: " + "Неизвестная ошибка");
                     break;
@@ -1192,14 +1212,22 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button7_Click(object sender, EventArgs e)
         {
-            // вызов метода ведения логов
-            log_writer(5);
-
             // имя файла 
             string file_name = textBox14.Text;
 
-            // вызов метода выгрузки в файл
-            write_into_file(file_name);
+            // проверка формата выгрузки
+            if (file_format_check(file_name))
+            {
+                // вызов метода выгрузки в файл
+                write_into_file(file_name);
+                // вызов метода ведения логов
+                log_writer(5);
+            }
+            else // если ошибка в формате файла 
+            {
+                log_writer(108);
+                MessageBox.Show("Файл с игрой не был сохранен!", "Ошибка");
+            }
            
         }
 
@@ -1236,17 +1264,27 @@ namespace MS_LR_1
             // проверка существования файла 
             if(file_check(file_name)) // если существует
             {
-                if (load_from_file(file_name))
+                // проверка формата
+                if (file_format_check(file_name))
                 {
-                    // вызов метода ведения логов
-                    log_writer(4);
-                    MessageBox.Show("Игра была загружена из файла!", "Сообщение");
+                    // загрузка + проверка
+                    if (load_from_file(file_name))
+                    {
+                        // вызов метода ведения логов
+                        log_writer(4);
+                        MessageBox.Show("Игра была загружена из файла!", "Сообщение");
+                    }
+                    else
+                    {
+                        // вызов метода ведения логов
+                        log_writer(103);
+                        MessageBox.Show("Игра не была загружена из файла!", "Сообщение");
+                    }
                 }
-                else 
+                else // ошибка формата файла
                 {
-                    // вызов метода ведения логов
-                    log_writer(103);
-                    MessageBox.Show("Игра не была загружена из файла!", "Сообщение");
+                    log_writer(108);
+                    MessageBox.Show("Игра не была загружена из файла!", "Ошибка");
                 }
             }
             else // иначе...
