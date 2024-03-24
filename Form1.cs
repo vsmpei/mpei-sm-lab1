@@ -134,7 +134,10 @@ namespace MS_LR_1
             // инициализируем поток чтения 
             StreamReader sr = new StreamReader(file_name);
 
-            // читаем первую строку с количеством стратегий первого игрока
+            // пропуск строки
+            sr.ReadLine();
+
+            // читаем строку с количеством стратегий первого игрока
             if (!(int.TryParse(sr.ReadLine(), out N)))
             {
                 log_writer(103);
@@ -144,7 +147,7 @@ namespace MS_LR_1
                 return false;
             }
 
-            // читаем вторую строку с количеством стратегий второго игрока
+            // читаем строку с количеством стратегий второго игрока
             if (!(int.TryParse(sr.ReadLine(), out M)))
             {
                 log_writer(103);
@@ -170,10 +173,16 @@ namespace MS_LR_1
                 // количество стратегий второго игрока
                 dataGridView1.ColumnCount = M;
 
+                // пропуск строки
+                sr.ReadLine();
+
                 // читаем третью строку с именем ПЕРВОГО игрока 
                 dataGridView1.Rows[1].Cells[0].Value = sr.ReadLine();
                 // читаем четвертую строку с именем ВТОРОГО игрока
                 dataGridView1.Rows[0].Cells[1].Value = sr.ReadLine();
+
+                // пропуск строки
+                sr.ReadLine();
 
                 // ввод стратегий ПЕРВОГО игрока
                 for (int i = 2; i < N; i++)
@@ -212,6 +221,9 @@ namespace MS_LR_1
                     }
 
                 }
+
+                // пропуск строки
+                sr.ReadLine();
 
                 // делаем строку пустой, на всякий
                 read_str = "";
@@ -288,6 +300,9 @@ namespace MS_LR_1
                 // инициализируем поток 
                 StreamWriter sw = new StreamWriter(file_name);
 
+                // шапка для номеров стратегий
+                sw.WriteLine("Количество стратегий:");
+
                 // количество стратегий первого игрока с учетом сдвига
                 res_str = Convert.ToString(dataGridView1.Rows.Count-2);
                 sw.WriteLine(res_str);
@@ -295,8 +310,8 @@ namespace MS_LR_1
                 res_str = Convert.ToString(dataGridView1.Columns.Count-2);
                 sw.WriteLine(res_str);
 
-                // выводим никнеймы игроков в файл
-                //sw.WriteLine("Игроки: \n");
+                // шапка никнеймов игроков
+                sw.WriteLine("Никнеймы игроков:");
                 // имя ПЕРВОГО игрока
                 res_str = Convert.ToString(dataGridView1.Rows[1].Cells[0].Value);
                 sw.WriteLine(res_str);
@@ -308,7 +323,7 @@ namespace MS_LR_1
                 res_str = "";
 
                 // выводим стратегии в файл
-                //sw.WriteLine("Стратегии: \n");
+                sw.WriteLine("Названия стратегий:");
                 // вывод стратегий ВТОРОГО игрока
                 for (int j = 2; j < N; j++)
                 {
@@ -350,7 +365,7 @@ namespace MS_LR_1
 
                 // вывод весов в файл
                 //res_str = "Веса: \n";
-                //sw.WriteLine(res_str);
+                sw.WriteLine("Матрица весов:");
                 //res_str = "";
                 // записываем в файл веса
                 // по всей платежной матрице, но не таблице!
