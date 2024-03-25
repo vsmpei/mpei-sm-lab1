@@ -1605,7 +1605,8 @@ namespace MS_LR_1
                 cats.Text = "КИСЫ.png";
                 // showtime
                 cats.Show();
-
+                // сброс печенек...
+                cookie = 0;
             }
         }
 
