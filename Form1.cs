@@ -1058,6 +1058,7 @@ namespace MS_LR_1
 
             // добавление строк ВРУЧНУЮ
             dataGridView1.AllowUserToAddRows = false;
+
         }
 
         //---------------------------------------------------------------------------------------------------------------------
@@ -1119,6 +1120,22 @@ namespace MS_LR_1
                 // второй игрок 
                 dataGridView1.Rows[1].Cells[0].Value = textBox2.Text;
 
+                // ввод станартных стратегий для ПЕРВОГО игрока
+                for (int i = 2; i < N; i++)
+                {
+                    // страндартная стратегия
+                    dataGridView1.Rows[i].Cells[1].Value = "Стратегия "+Convert.ToString(i-1);
+
+                }
+
+                // ввод станартных стратегий для ВТОРОГО игрока
+                for (int j = 2; j < M; j++)
+                {
+                    // страндартная стратегия
+                    dataGridView1.Rows[1].Cells[j].Value = "Стратегия " + Convert.ToString(j - 1);
+
+                }
+
                 // заполняем нулями...
                 initial_zero();
                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows.Count), "Сообщение");
@@ -1153,7 +1170,7 @@ namespace MS_LR_1
                 if (int.TryParse(textBox6.Text, out ind))
                 {
                     ind++; // +1 т.к. таблица смещена относительно первой ячейки (0,0)
-                    MessageBox.Show(Convert.ToString(ind));
+                    //MessageBox.Show(Convert.ToString(ind));
                 }
                 else 
                 {
