@@ -38,27 +38,32 @@
 ### Загрузка модели из файла
 Модель можно загрузить из текстового файла следующего формата:
 ```
+Количество стратегий:
 <n - количество стратегий первого игрока> 
 <m - количество стратегий второго игрока>
+Никнеймы игроков:
 <имя первого игрока>
 <имя второго игрока>
+Названия стратегий:
 <название стратегии 1 для первого игрока>
 ...
 <название стратегии n для первого игрока>
 <название стратегии 1 для второго игрока>
 ...
 <название стратегии m для второго игрока>
+Матрица весов:
 <a11> ... <a1m>
 ...
 <an1> ... <anm>
 ```
 |Содержание текстового файла|Результат загрузки|
 |:-:|:-:|
-|![load](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/loadPNG.PNG)|![load_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/load_m.PNG)|
+|![load](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/load_new.PNG)|![load_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/load_m.PNG)|
 ### Выгрузка модели в файл
+Файл выгрузки имеет тот же формат, что и файл загрузки. 
 |Матрица игры|Содержание текстового файла|
 |:-:|:-:|
-|![save_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/save_m.PNG)|![save](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/save.PNG)|
+|![save_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/save_m.PNG)|![save](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/save_new.PNG)|
 ### Заполнение матрицы случайными весами
 Веса для каждой ситуации генерируются случайно из диапазона [-10; 10].
 |Матрица игры до заполнения|Матрица игры после заполнения|
