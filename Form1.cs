@@ -122,6 +122,73 @@ namespace MS_LR_1
             }
         }
 
+        // дополнительный объект для хранения изменений
+        private DataGridView dataGridViewBuff = new DataGridView();
+
+        // АВТОСОХРАНЕНИЕ ИЗМЕНЕНИЙ
+        private void auto_save()
+        {
+            if ((dataGridView1.Rows.Count > 2)&&(dataGridView1.Rows.Count > 2))
+            {
+                // размерность буферной dataGrid
+                dataGridViewBuff.RowCount = dataGridView1.Rows.Count;
+                dataGridViewBuff.ColumnCount = dataGridView1.Columns.Count;
+
+                // по строкам
+                for (int i = 0; i < dataGridViewBuff.Rows.Count; i++)
+                {
+                    // по столбцам
+                    for (int j = 0; j < dataGridViewBuff.Columns.Count; j++)
+                    {
+                        // копируем значение 
+                        dataGridViewBuff.Rows[i].Cells[j].Value = dataGridView1.Rows[i].Cells[j].Value;
+                    }
+                }
+            }
+        }
+
+        // ОТМЕНА ИЗМЕНЕНИЙ
+        private bool cancel_edit()
+        {
+            // проверка инициализации 
+            if (initial_check())
+            {
+                // проверка размерности буферной матрицы
+                if ((dataGridViewBuff.Rows.Count > 2) && (dataGridViewBuff.Rows.Count > 2))
+                {
+                    // размерность dataGrid1
+                    dataGridView1.RowCount = dataGridViewBuff.Rows.Count;
+                    dataGridView1.ColumnCount = dataGridViewBuff.Columns.Count;
+
+                    // по строкам
+                    for (int i = 0; i < dataGridViewBuff.Rows.Count; i++)
+                    {
+                        // по столбцам
+                        for (int j = 0; j < dataGridViewBuff.Columns.Count; j++)
+                        {
+                            // копируем значение 
+                            dataGridView1.Rows[i].Cells[j].Value = dataGridViewBuff.Rows[i].Cells[j].Value;
+                        }
+                    }
+                    return true;
+                }
+                else // иначе...
+                {
+                    MessageBox.Show("Отсутствует автосохранение!", "Ошибка");
+                    MessageBox.Show("Игра была только инициализирована, совершите какие-либо действия над игрой!", "Подсказка");
+
+                    return false;
+                }
+            }
+            else // если игра не инициализирована
+            {
+                MessageBox.Show("Отсутствует автосохранение!", "Ошибка");
+                MessageBox.Show("Возможно игра не инициализирована", "Подсказка");
+
+                return false;
+            }
+        }
+
         // ЗАГРУЗКА ИЗ ФАЙЛА 
         private bool load_from_file (string file_name)
         {
@@ -974,6 +1041,12 @@ namespace MS_LR_1
                 case 10:
                     sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Удаление слабо доминируемых стратегий");
                     break;
+                case 11:
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Автосохранение...");
+                    break;
+                case 12:
+                    sw.WriteLine(DateTime.Now + " " + "Сообщение: " + "Отмена последнего действия");
+                    break;
                 case 101:
                     sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка выполнить операцию при отсутствии инциализации");
                     break;
@@ -1003,6 +1076,9 @@ namespace MS_LR_1
                     break;
                 case 110:
                     sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка ввода нулевых или отрицательных значений в поле ввода количества стратегий");
+                    break;
+                case 111:
+                    sw.WriteLine(DateTime.Now + " " + "Ошибка: " + "Попытка отмены при отсутствии инициализации или отсутствии автосохранения");
                     break;
                 default:
                     sw.WriteLine(DateTime.Now + " " + "Предупреждение: " + "Неизвестная ошибка");
@@ -1141,6 +1217,9 @@ namespace MS_LR_1
 
                 // заполняем нулями...
                 initial_zero();
+                // автосохранение
+                auto_save();
+                log_writer(11);
                 //MessageBox.Show(Convert.ToString(dataGridView1.Rows.Count), "Сообщение");
                 MessageBox.Show("Матрица игры создана!", "Сообщение");
             }
@@ -1163,6 +1242,10 @@ namespace MS_LR_1
             // проверка инициализации
             if (initial_check())
             {
+                // автосохранение
+                auto_save();
+                log_writer(11);
+
                 // имя игрока
                 string name = textBox5.Text;
 
@@ -1238,10 +1321,12 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button6_Click(object sender, EventArgs e)
         {
-
             // проверка инициализации матрицы
             if (initial_check())
             {
+                // автосохранение
+                auto_save();
+                log_writer(11);
 
                 // размерность таблицы
                 int N = dataGridView1.Rows.Count;
@@ -1362,6 +1447,9 @@ namespace MS_LR_1
                 write_into_file(file_name);
                 // вызов метода ведения логов
                 log_writer(5);
+                // автосохранение
+                auto_save();
+                log_writer(11);
             }
             else // если ошибка в формате файла 
             {
@@ -1382,6 +1470,8 @@ namespace MS_LR_1
             {
                 // вызов метода ведения логов
                 log_writer(6);
+                // сохранение предыдущей матрицы
+                auto_save();
                 initial_random();
                 MessageBox.Show("Рандомные значения весов сгенерированы!", "Сообщение");
             }
@@ -1397,6 +1487,9 @@ namespace MS_LR_1
         //---------------------------------------------------------------------------------------------------------------------
         private void button9_Click(object sender, EventArgs e)
         {
+            // автосохранение
+            auto_save();
+            log_writer(11);
 
             // имя файла 
             string file_name = textBox13.Text;
@@ -1444,6 +1537,10 @@ namespace MS_LR_1
             // проверка инициализации матрицы
             if (initial_check())
             {
+                // автосохранение
+                auto_save();
+                log_writer(11);
+                // удаление стратегий
                 remove_strictly_dominant();
                 log_writer(9);
                 MessageBox.Show("Строго доминируемые стратегии удалены!", "Сообщение");
@@ -1463,6 +1560,10 @@ namespace MS_LR_1
             // проверка инициализации матрицы
             if (initial_check())
             {
+                // автосохранение
+                auto_save();
+                log_writer(11);
+                // удаление стратегий
                 remove_weakly_dominant();
                 log_writer(10);
                 MessageBox.Show("Слабо доминируемые стратегии удалены!", "Сообщение");
@@ -1485,6 +1586,24 @@ namespace MS_LR_1
             fr.Text = "История изменений";
             // показываем форму с историей
             fr.Show();
+        }
+        
+        // отмена предыдущего действия
+        private void button11_Click(object sender, EventArgs e)
+        {
+            // отменяем изменения
+            if (cancel_edit())
+            {
+                // выводим сообщение
+                MessageBox.Show("Последнее действие отменено!", "Сообщение");
+                log_writer(12);
+            }
+            else 
+            {
+                // выводим сообщение
+                MessageBox.Show("Последнее действие не было отменено!", "Ошибка");
+                log_writer(111);
+            }
         }
     }
 }

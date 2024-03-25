@@ -84,6 +84,8 @@ namespace MS_LR_1
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -200,7 +202,7 @@ namespace MS_LR_1
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.Location = new System.Drawing.Point(128, 247);
+            this.button1.Location = new System.Drawing.Point(139, 247);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 36);
@@ -299,7 +301,7 @@ namespace MS_LR_1
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button2.Location = new System.Drawing.Point(147, 247);
+            this.button2.Location = new System.Drawing.Point(165, 247);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 36);
@@ -322,6 +324,8 @@ namespace MS_LR_1
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox3.Controls.Add(this.label25);
+            this.groupBox3.Controls.Add(this.button11);
             this.groupBox3.Controls.Add(this.button5);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.button4);
@@ -343,7 +347,7 @@ namespace MS_LR_1
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button5.Location = new System.Drawing.Point(339, 209);
+            this.button5.Location = new System.Drawing.Point(365, 177);
             this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(108, 36);
@@ -356,7 +360,7 @@ namespace MS_LR_1
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(284, 175);
+            this.label15.Location = new System.Drawing.Point(320, 145);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(218, 19);
@@ -366,7 +370,7 @@ namespace MS_LR_1
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button4.Location = new System.Drawing.Point(339, 112);
+            this.button4.Location = new System.Drawing.Point(365, 97);
             this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(108, 36);
@@ -379,7 +383,7 @@ namespace MS_LR_1
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(279, 80);
+            this.label14.Location = new System.Drawing.Point(314, 67);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(224, 19);
@@ -389,7 +393,7 @@ namespace MS_LR_1
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button3.Location = new System.Drawing.Point(63, 255);
+            this.button3.Location = new System.Drawing.Point(49, 255);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(108, 36);
@@ -402,7 +406,7 @@ namespace MS_LR_1
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(45, 158);
+            this.label12.Location = new System.Drawing.Point(45, 145);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(84, 19);
@@ -413,7 +417,7 @@ namespace MS_LR_1
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(45, 76);
+            this.label11.Location = new System.Drawing.Point(45, 67);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(84, 19);
@@ -422,7 +426,7 @@ namespace MS_LR_1
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(49, 191);
+            this.textBox9.Location = new System.Drawing.Point(39, 184);
             this.textBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(132, 22);
@@ -430,7 +434,7 @@ namespace MS_LR_1
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(49, 111);
+            this.textBox8.Location = new System.Drawing.Point(39, 104);
             this.textBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(132, 22);
@@ -697,6 +701,26 @@ namespace MS_LR_1
             this.label22.TabIndex = 6;
             this.label22.Text = "Матрица игры";
             // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button11.Location = new System.Drawing.Point(365, 255);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(108, 36);
+            this.button11.TabIndex = 10;
+            this.button11.Text = "Отменить";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(321, 229);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(217, 17);
+            this.label25.TabIndex = 12;
+            this.label25.Text = "Отменить последнее действие:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -788,6 +812,8 @@ namespace MS_LR_1
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Label label25;
     }
 }
 
