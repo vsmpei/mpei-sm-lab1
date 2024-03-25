@@ -3,10 +3,10 @@
 \
 ![interface](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/interface.PNG)
 ## Создание модели
-При ручном создании модели нужно указать имена игроков и количество стратегий каждого игрока. Будет создана матрица, в которой пока нет названий стратегий, а все веса равны нулю.
+При ручном создании модели нужно указать имена игроков и количество стратегий каждого игрока. Будет создана матрица, в которой указаны стандартные названия стратегий, а все веса равны нулю.
 |Элемент приложения|Результат работы|
 |:-:|:-:|
-|![create](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/create.PNG)|![create_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/create_m.PNG)|
+|![create](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/create.PNG)|![create_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/create_m_new.PNG)|
 ## Настройка модели
 ### Задание стратегий
 Для ручного задания стратегии нужно указать имя игрока, номер новой стратегии и ее название. 
