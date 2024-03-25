@@ -60,6 +60,7 @@
 |:-:|:-:|
 |![load](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/load_new.PNG)|![load_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/load_m.PNG)|
 ### Выгрузка модели в файл
+Файл выгрузки имеет тот же формат, что и файл загрузки. 
 |Матрица игры|Содержание текстового файла|
 |:-:|:-:|
 |![save_m](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/save_m.PNG)|![save](https://github.com/vsmpei/mpei-sm-lab1/blob/master/Images/save_new.PNG)|
