@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace MS_LR_1
 {
@@ -1058,6 +1059,8 @@ namespace MS_LR_1
 
             // добавление строк ВРУЧНУЮ
             dataGridView1.AllowUserToAddRows = false;
+            // запрет на ввод значений вручную в dataGridView
+            dataGridView1.ReadOnly = true;
 
         }
 
